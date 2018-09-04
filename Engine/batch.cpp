@@ -5,27 +5,27 @@ void Batch::_bind() {
 	for (int i = 0; i < _input.size(); i++) {
 		if (_input[i]->type == 0)
 			((ShaderInputint32*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 1)
+		else if (_input[i]->type == 1)
 			((ShaderInputuint32*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 2)
+		else if (_input[i]->type == 2)
 			((ShaderInputfloat*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 3)
+		else if (_input[i]->type == 3)
 			((ShaderInputivec2*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 4)
+		else if (_input[i]->type == 4)
 			((ShaderInputivec3*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 5)
+		else if (_input[i]->type == 5)
 			((ShaderInputivec4*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 6)
+		else if (_input[i]->type == 6)
 			((ShaderInputvec2*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 7)
+		else if (_input[i]->type == 7)
 			((ShaderInputvec3*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 8)
+		else if (_input[i]->type == 8)
 			((ShaderInputvec4*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 9)
+		else if (_input[i]->type == 9)
 			((ShaderInputmat2*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 10)
+		else if (_input[i]->type == 10)
 			((ShaderInputmat3*)(_input[i]))->bind(_pipeline);
-		if (_input[i]->type == 11)
+		else if (_input[i]->type == 11)
 			((ShaderInputmat4*)(_input[i]))->bind(_pipeline);
 	}
 	//

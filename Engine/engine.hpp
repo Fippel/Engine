@@ -19,7 +19,7 @@ private:
 	std::unique_ptr<MeshLoader> _meshLoader;
 	std::unique_ptr<TextureLoader> _textureLoader;
 	std::shared_ptr<Texture> _testTexture;
-	std::shared_ptr<Texture> _waterTexture; // temp... ändra så att meshes har egna texturer
+	std::shared_ptr<Texture> _waterTexture;
 	std::shared_ptr<GLFrameBuffer> _deferredFBO;
 	GLFrameBuffer* _waterFBO;
 	ShaderProgram* _geometryPass;
