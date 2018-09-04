@@ -10,6 +10,8 @@ public:
 	glm::ivec2 mousePos = { 0, 0 };
 	glm::vec3 position = { 0, 0, 0 };
 	glm::quat orientation;
+	glm::mat4 view;
+	glm::mat4 proj;
 
 	bool pressedShift = false;
 	bool moveUp = false;
@@ -26,8 +28,8 @@ public:
 	float yaw;
 	float counter = 0.f;
 
-	void update(float dt);
+	void update(float dt, float y);
 
-	glm::mat4 getView();
-	glm::mat4 getProj();
+	glm::mat4* getView();
+	glm::mat4* getProj();
 };

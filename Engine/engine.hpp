@@ -7,6 +7,7 @@
 #include "meshloader.hpp"
 #include "glframebuffer.hpp"
 #include "camera.hpp"
+#include "batch.hpp"
 #include <memory>
 
 
@@ -20,7 +21,7 @@ private:
 	std::shared_ptr<Texture> _testTexture;
 	std::shared_ptr<Texture> _waterTexture; // temp... ändra så att meshes har egna texturer
 	std::shared_ptr<GLFrameBuffer> _deferredFBO;
-	std::shared_ptr<GLFrameBuffer> _waterFBO;
+	GLFrameBuffer* _waterFBO;
 	ShaderProgram* _geometryPass;
 	ShaderProgram* _lightingPass;
 	ShaderProgram* _waterPass;
@@ -28,11 +29,15 @@ private:
 	Camera _camera;
 	std::vector<Model> _models;
 	std::vector<Model> _waters;
+	std::vector<Terrain> _terrains;
+
+	Batch* _testBatch;
 
 	void _init();
 	void _initSDL();
 	void _initGL();
 	void _initWorld();
+
 
 public:
 	Engine();

@@ -125,6 +125,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="batch.cpp" />
     <ClCompile Include="camera.cpp" />
     <ClCompile Include="engine.cpp" />
     <ClCompile Include="glad.c" />
@@ -140,6 +141,7 @@
     <ClCompile Include="window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="batch.hpp" />
     <ClInclude Include="camera.hpp" />
     <ClInclude Include="engine.hpp" />
     <ClInclude Include="glframebuffer.hpp" />

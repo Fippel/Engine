@@ -40,6 +40,27 @@ void Engine::_initGL() {
 void Engine::_initWorld() {
 	_testTexture = _textureLoader->loadTexture("assets/textures/grass.png");
 	_waterTexture = _textureLoader->loadTexture("assets/textures/water.png");
+
+	_testBatch = new Batch();
+	_testBatch->createPipeline("assets/shaders/geometryPass.vert", "assets/shaders/geometryPass.frag");
+	_testBatch->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
+	_testBatch->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
+	_testBatch->addTexture(Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight());
+	_testBatch->addDepthTexture(_window->getWidth(), _window->getHeight());
+	_testBatch->FBOFinalize();
+	_testBatch->setTextureIndices(6, 0, 0, 0);
+	_testBatch->addInput(1, _camera.getView());
+	_testBatch->addInput(2, _camera.getProj());
+	_testBatch->addInput(25, new int(6));
+	
+	_waterFBO = new GLFrameBuffer();
+	_waterFBO->bind()
+		.addTexture(0, Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight())
+		.addTexture(1, Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight())
+		.addTexture(2, Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight())
+		.addDepth(3, _window->getWidth(), _window->getHeight())
+		.finalize();
+
 	_deferredFBO = std::shared_ptr<GLFrameBuffer>(new GLFrameBuffer());
 	_deferredFBO->bind()
 		.addTexture(0, Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight())
@@ -47,24 +68,24 @@ void Engine::_initWorld() {
 		.addTexture(2, Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight())
 		.addDepth(3, _window->getWidth(), _window->getHeight())
 		.finalize();
-
-	_waterFBO = std::shared_ptr<GLFrameBuffer>(new GLFrameBuffer());
-	_waterFBO->bind()
-		.addTexture(0, Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight()) // Reflection
-		.addTexture(1, Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight()) // Refraction
-		.addDepth(2, _window->getWidth(), _window->getHeight())
-		.finalize();
-
-	//_models.push_back(_meshLoader->loadMesh("assets/models/sponza.obj", true));
-	//_models.back().updateModelMatrix(glm::vec3(0, 0, 0), glm::vec3(0.3f));
-	_models.push_back(Terrain(glm::vec3(0, -10, 0), 100, "assets/textures/heightmap5.bmp", _textureLoader->loadTexture("assets/textures/grass.png")).getModel());
-	_waters.push_back(Terrain(glm::vec3(10, -3, 10), 80, "", nullptr).getModel());
+	//
+	//_waterFBO = std::shared_ptr<GLFrameBuffer>(new GLFrameBuffer());
+	//_waterFBO->bind()
+	//	.addTexture(0, Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight()) // Reflection
+	//	.addTexture(1, Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight()) // Refraction
+	//	.addDepth(2, _window->getWidth(), _window->getHeight())
+	//	.finalize();
+	//
+	_testBatch->registerModel(new Model((_meshLoader->loadMesh("assets/models/sponza.obj", true))));
+	////_models.back().updateModelMatrix(glm::vec3(0, 0, 0), glm::vec3(0.3f));
+	_models.push_back(_meshLoader->loadMesh("assets/models/sponza.obj", true));
+	//_models.push_back(Terrain(glm::vec3(0, -10, 0), 100, "assets/textures/heightmap5.bmp", _textureLoader->loadTexture("assets/textures/grass.png")).getModel());
+	_terrains.push_back(Terrain(glm::vec3(0, -10, 0), 100, "assets/textures/heightmap5.bmp", _textureLoader->loadTexture("assets/textures/grass.png")));
+	//_waters.push_back(Terrain(glm::vec3(10, -3, 10), 80, "", nullptr).getModel());
 	//_models.push_back(_meshLoader->loadTerrain(100, "assets/textures/heightmap5.bmp", "assets/textures/grass.png", glm::vec3(0.f, -10.f, 0.f)));
 	//_models.push_back(_meshLoader->loadTerrain(80, "", "assets/textures/water.png", glm::vec3(10, -3, 10)));
 	//_waters.push_back(_meshLoader->loadTerrain(80, "", "", glm::vec3(10, -3, 10)));
 	_camera.position = glm::vec3(0, 0, 0);
-
-
 }
 
 Engine::Engine() {
@@ -147,31 +168,38 @@ int Engine::run() {
 			}
 		}
 
-		_camera.update(deltaTime);
+		_camera.update(deltaTime, _terrains[0].getHeight(_camera.position.x, _camera.position.z));
 
 		{	//Geometry pass
-			glEnable(GL_CLIP_DISTANCE0);
-			_geometryPass->useProgram();
-			_geometryPass->setValue(1, _camera.getView());
-			_geometryPass->setValue(2, _camera.getProj());
-			_geometryPass->setValue(25, 6);
-			//_testTexture->bind(6);
-			_deferredFBO->bind();
+			//glEnable(GL_CLIP_DISTANCE0);
+			//_geometryPass->useProgram();
+			//_geometryPass->setValue(0, _models[0].model);
+			//_geometryPass->setValue(1, _camera.getView());
+			//_geometryPass->setValue(2, _camera.getProj());
+			//_geometryPass->setValue(25, 6);
+			////_testTexture->bind(6);
+			//_waterFBO->bind();
+			//
+			//
+			//_renderer->render(_window.get(), _models, _geometryPass);
+			//_renderer->render(_window.get(), _terrains, _geometryPass);
+			//_renderer->renderWater(_window.get(), _waters, _waterPass);
 
 			
-			_renderer->render(_window.get(), _models, _geometryPass);
-			//_renderer->renderWater(_window.get(), _waters, _waterPass);
+			_camera.getView();
+			_camera.getProj();
+			_testBatch->render(_window.get());
 		}
 
-		{	// Water pass
-			_waterPass->useProgram();
-			_waterPass->setValue(1, _camera.getView());
-			_waterPass->setValue(2, _camera.getProj());
-			_waterPass->setValue(25, 6);
-			_deferredFBO->bind();
-			//_waterFBO->bind();
-			_renderer->renderWater(_window.get(), _waters, _waterPass);
-		}
+		//{	// Water pass
+		//	_waterPass->useProgram();
+		//	_waterPass->setValue(1, _camera.getView());
+		//	_waterPass->setValue(2, _camera.getProj());
+		//	_waterPass->setValue(25, 6);
+		//	_deferredFBO->bind();
+		//	//_waterFBO->bind();
+		//	_renderer->renderWater(_window.get(), _waters, _waterPass);
+		//}
 
 		{	//Lighting pass
 			_lightingPass->useProgram();
@@ -180,10 +208,14 @@ int Engine::run() {
 			_lightingPass->setValue(22, 2);
 			_lightingPass->setValue(23, 3);
 			//_lightingPass->setValue(24, 4);
-			(*_deferredFBO)[0]->bind(0);
-			(*_deferredFBO)[1]->bind(1);
-			(*_deferredFBO)[2]->bind(2);
-			_deferredFBO->bindDepth(3);
+			(*(_testBatch->getFBO()))[0]->bind(0);
+			(*(_testBatch->getFBO()))[1]->bind(1);
+			(*(_testBatch->getFBO()))[2]->bind(2);
+			_testBatch->getFBO()->bindDepth(3);
+			//(*_waterFBO)[0]->bind(0);
+			//(*_waterFBO)[1]->bind(1);
+			//(*_waterFBO)[2]->bind(2);
+			//_waterFBO->bindDepth(3);
 			//_testTexture->bind(4);
 			glBindFramebuffer(GL_FRAMEBUFFER, 0);
 			_renderer->render(_window.get(), _lightingPass);

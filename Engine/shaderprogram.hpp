@@ -15,6 +15,7 @@ public:
 		FragmentShader = GL_FRAGMENT_SHADER,
 		ComputeShader = GL_COMPUTE_SHADER
 	};
+	ShaderProgram();
 	ShaderProgram(const std::string& label);
 	~ShaderProgram();
 	ShaderProgram& attachShader(GLenum type, const std::string& path);

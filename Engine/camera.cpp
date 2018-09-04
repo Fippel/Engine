@@ -4,7 +4,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <glm/gtx/transform.hpp>
 
-void Camera::update(float dt) {
+void Camera::update(float dt, float y) {
 	if (!enableMouse) {
 		glm::ivec2 prev = mousePos;
 		SDL_GetMouseState(&mousePos.x, &mousePos.y);
@@ -38,6 +38,7 @@ void Camera::update(float dt) {
 	walkDir = orientation * walkDir;
 
 	position += walkDir * dt * speed * 0.001f;
+	//position.y = y;
 	if (moveUp)
 		position.y += speed * dt;
 	if (moveDown)
@@ -46,13 +47,15 @@ void Camera::update(float dt) {
 	counter += 1 * dt;
 }
 
-glm::mat4 Camera::getView() {
-	return glm::inverse(glm::translate(position) * glm::mat4_cast(glm::rotate(orientation, glm::pi<float>(), glm::vec3(0, 1, 0))));
+glm::mat4* Camera::getView() {
+	view = glm::inverse(glm::translate(position) * glm::mat4_cast(glm::rotate(orientation, glm::pi<float>(), glm::vec3(0, 1, 0))));
+	return &view;
 }
 
-glm::mat4 Camera::getProj() {
+glm::mat4* Camera::getProj() {
 	auto size = Engine::getInstance()->getWindow()->getSizes();
 	float aspect = size.x / (float)size.y;
 
-	return glm::perspective(glm::radians(70.f), aspect, zNear, zFar);
+	proj = glm::perspective(glm::radians(70.f), aspect, zNear, zFar);
+	return &proj;
 }

@@ -1,9 +1,13 @@
 #include <fstream>
 #include "shaderprogram.hpp"
 
+ShaderProgram::ShaderProgram() {
+	_program = glCreateProgram();
+}
+
 ShaderProgram::ShaderProgram(const std::string& label) {
 	_program = glCreateProgram();
-	glObjectLabel(GL_PROGRAM, _program, -1, label.c_str());
+	//glObjectLabel(GL_PROGRAM, _program, -1, label.c_str());
 }
 
 ShaderProgram::~ShaderProgram() {

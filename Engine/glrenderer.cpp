@@ -55,7 +55,7 @@ void GLRenderer::render(Window* window, ShaderProgram* shader) {
 	glBindVertexArray(0);
 }
 
-void GLRenderer::render(Window * window, std::vector<Model>& models, ShaderProgram* shader) {
+void GLRenderer::render(Window* window, std::vector<Model>& models, ShaderProgram* shader) {
 	glViewport(0, 0, window->getWidth(), window->getHeight());
 	glClearColor(0, 0, 0, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -75,11 +75,30 @@ void GLRenderer::render(Window * window, std::vector<Model>& models, ShaderProgr
 	}
 }
 
-void GLRenderer::renderWater(Window * window, std::vector<Model>& waters, ShaderProgram * shader) {
+void GLRenderer::render(Window* window, std::vector<Terrain>& terrains, ShaderProgram* shader) {
+	glViewport(0, 0, window->getWidth(), window->getHeight());
+	glClearColor(0, 0, 0, 1.0f);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+
+	for (auto terrain : terrains) {
+		shader->setValue(0, terrain.getModel().model);
+		for (auto mesh : terrain.getModel().meshes) {
+			if (mesh->getTextures().size() > 0) {
+				Texture tex = mesh->getTextures().at("diffuseTexture");
+				tex.bind(6); // bindar inte jälp!? nu går det inte. kom ihåg vad som ska göras.
+			}
+
+			glBindVertexArray(mesh->getVAO());
+			glDrawElements(GL_TRIANGLES, mesh->getIndices().size(), GL_UNSIGNED_INT, nullptr);
+			glBindVertexArray(0);
+		}
+	}
+}
+
+void GLRenderer::renderWater(Window* window, std::vector<Model>& waters, ShaderProgram* shader) {
 	glViewport(0, 0, window->getWidth(), window->getHeight());
 	glClearColor(0, 0, 0, 1.0f);
 	//glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	printf("RENDERWATER");
 	for (auto model : waters) {
 		shader->setValue(0, model.model);
 		for (auto mesh : model.meshes) {
@@ -94,3 +113,5 @@ void GLRenderer::renderWater(Window * window, std::vector<Model>& waters, Shader
 		}
 	}
 }
+
+

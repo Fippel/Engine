@@ -6,6 +6,8 @@
 #include "shaderprogram.hpp"
 #include "window.hpp"
 #include "mesh.hpp"
+#include "terrain.hpp"
+#include "batch.hpp"
 
 class GLRenderer {
 private:
@@ -17,6 +19,7 @@ public:
 	~GLRenderer();
 	void render(Window* window, ShaderProgram* shader);
 	void render(Window* window, std::vector<Model>& models, ShaderProgram* shader);
+	void render(Window* window, std::vector<Terrain>& terrains, ShaderProgram* shader);
 	void renderWater(Window* window, std::vector<Model>& waters, ShaderProgram* shader);
 
 	static void APIENTRY openglCallbackFunction(

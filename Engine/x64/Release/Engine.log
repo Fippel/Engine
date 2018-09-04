@@ -1,77 +1,52 @@
-﻿  camera.cpp
+﻿  batch.cpp
 d:\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
 d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+          with
+          [
+              T=float
+          ]
 d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-d:\engine\engine\glrenderer.hpp(35): warning C4473: 'printf' : not enough arguments passed for format string
-  d:\engine\engine\glrenderer.hpp(35): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
-  d:\engine\engine\glrenderer.hpp(35): note: the missing variadic argument 1 is required by format string '%s'
 d:\engine\engine\glframebuffer.hpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-camera.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\engine\engine\batch.cpp(32): warning C4018: '<': signed/unsigned mismatch
+d:\engine\engine\batch.cpp(115): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   engine.cpp
 d:\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
 d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+          with
+          [
+              T=float
+          ]
+d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+          with
+          [
+              T=float
+          ]
 d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-d:\engine\engine\glrenderer.hpp(35): warning C4473: 'printf' : not enough arguments passed for format string
-  d:\engine\engine\glrenderer.hpp(35): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
-  d:\engine\engine\glrenderer.hpp(35): note: the missing variadic argument 1 is required by format string '%s'
 d:\engine\engine\glframebuffer.hpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-engine.cpp(150): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-  glrenderer.cpp
-d:\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
-d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-d:\engine\engine\glrenderer.hpp(35): warning C4473: 'printf' : not enough arguments passed for format string
-  d:\engine\engine\glrenderer.hpp(35): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
-  d:\engine\engine\glrenderer.hpp(35): note: the missing variadic argument 1 is required by format string '%s'
-d:\engine\engine\glframebuffer.hpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-glrenderer.cpp(54): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-glrenderer.cpp(72): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-glrenderer.cpp(92): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  main.cpp
-d:\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
-d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-d:\engine\engine\glrenderer.hpp(35): warning C4473: 'printf' : not enough arguments passed for format string
-  d:\engine\engine\glrenderer.hpp(35): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
-  d:\engine\engine\glrenderer.hpp(35): note: the missing variadic argument 1 is required by format string '%s'
-d:\engine\engine\glframebuffer.hpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-  mesh.cpp
-d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-  meshloader.cpp
-d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-meshloader.cpp(99): warning C4474: 'printf' : too many arguments passed for format string
-  meshloader.cpp(99): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-meshloader.cpp(136): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
-  terrain.cpp
-d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const float' to 'GLsizei', possible loss of data
-d:\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'float' to 'GLint', possible loss of data
-d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-terrain.cpp(39): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\engine\engine\glrenderer.hpp(38): warning C4473: 'printf' : not enough arguments passed for format string
+  d:\engine\engine\glrenderer.hpp(38): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
+  d:\engine\engine\glrenderer.hpp(38): note: the missing variadic argument 1 is required by format string '%s'
+d:\engine\engine\engine.cpp(171): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   Generating code
-  5 of 1284 functions ( 0.4%) were compiled, the rest were copied from previous compilation.
+  131 of 1596 functions ( 8.2%) were compiled, the rest were copied from previous compilation.
     0 functions were new in current compilation
-    11 functions had inline decision re-evaluated but remain unchanged
+    55 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
   Engine.vcxproj -> D:\Engine\x64\Release\Engine.exe
