@@ -116,10 +116,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="batchhandler.cpp" />
+    <ClCompile Include="entity.cpp" />
+    <ClCompile Include="entityhandler.cpp" />
+    <ClCompile Include="gameengine.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="gameengine.h" />
+    <ClInclude Include="batchhandler.hpp" />
+    <ClInclude Include="entityhandler.hpp" />
+    <ClInclude Include="entity.hpp" />
+    <ClInclude Include="gameengine.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
