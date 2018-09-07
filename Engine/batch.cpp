@@ -32,12 +32,23 @@ void Batch::_bind() {
 	//for (int i = 0; i < _nrOfTextures - 1; i++) 
 	//	(*_FBO)[i]->bind(i);
 	
-	_FBO->bind();
+	for( int i = 0; i < _inputFBO.size(); i++ ) {
+		for( int j = 0; j < _inputFBO[i].bindPos.size(); j++ ) {
+			if(!_inputFBO[i].isDepth[j])
+				(*(_inputFBO[i].buffer))[_inputFBO[i].texturePos[j]]->bind(_inputFBO[i].bindPos[j]);
+			else
+				_inputFBO[i].buffer->bindDepth(_inputFBO[i].bindPos[j]);
+		}
+	}
+	if(_outputFBO->getNumberOfTextures() > 0)
+		_outputFBO->bind();
+	else
+		glBindFramebuffer(GL_FRAMEBUFFER, 0);
 }
 
 Batch::Batch() {
 	_pipeline = nullptr;
-	_FBO = new GLFrameBuffer();
+	_outputFBO = new GLFrameBuffer();
 	_FBOBound = false;
 	_nrOfTextures = 0;
 	_textureIndices[0] = 0;
@@ -50,7 +61,7 @@ Batch::~Batch() {
 	if (_pipeline)
 		delete _pipeline;
 
-	delete _FBO;
+	delete _outputFBO;
 }
 
 void Batch::createPipeline(std::string vs, std::string fs, std::string gs, std::string cs) {
@@ -73,24 +84,28 @@ void Batch::createPipeline(std::string vs, std::string fs, std::string gs, std::
 void Batch::addTexture(Texture::TextureFormat type, int width, int height) {
 	if (!_FBOBound) {
 		_FBOBound = true;
-		_FBO->bind();
+		_outputFBO->bind();
 	}
 	
-	_FBO->addTexture(_nrOfTextures++, type, width, height);
+	_outputFBO->addTexture(_nrOfTextures++, type, width, height);
 }
 
 void Batch::addDepthTexture(int width, int height) {
 	if (!_FBOBound) {
 		_FBOBound = true;
-		_FBO->bind();
+		_outputFBO->bind();
 	}
 
-	_FBO->addDepth(_nrOfTextures++, width, height);
+	_outputFBO->addDepth(_nrOfTextures++, width, height);
 }
 
 void Batch::FBOFinalize() {
-	_FBO->finalize();
+	_outputFBO->finalize();
 	_FBOBound = false;
+}
+
+void Batch::addFBOInput(GLFrameIndex frameIndex) {
+	_inputFBO.push_back(frameIndex);
 }
 
 void Batch::render(Window* window) {
@@ -98,13 +113,11 @@ void Batch::render(Window* window) {
 	glViewport(0, 0, window->getWidth(), window->getHeight());
 	glClearColor(0, 0, 0, 1);
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	for (int i = 0; i < _input.size(); i++) {
-		if(_input[i]->type == 0)
-			printf("id: %d, value: %d\n", _input[i]->id, *((ShaderInputint32*)(_input[i]))->value);
-	}
 	
+	// OPTIMERINGAR TYP AVSTÅND TILL KAMERA
 	for (int i = 0; i < _models.size(); i++) {
-		_pipeline->setValue(0, _models[i]->model);
+		if( _outputFBO->getNumberOfTextures() != 0 )
+			_pipeline->setValue(0, _models[i]->model);
 		for (int j = 0; j < _models[i]->meshes.size(); j++) {
 			if (_models[i]->meshes[j]->getTextures().size() > 0) {
 				Texture tex = _models[i]->meshes[j]->getTextures().at("diffuseTexture");
@@ -130,5 +143,5 @@ void Batch::registerModel(Model* m) {
 }
 
 GLFrameBuffer* Batch::getFBO() {
-	return _FBO;
+	return _outputFBO;
 }

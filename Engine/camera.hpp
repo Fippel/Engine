@@ -1,8 +1,12 @@
 #pragma once
 
+
 #include <glm/gtc/quaternion.hpp>
 #include <glm/glm.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+#include <glm/gtx/transform.hpp>
 
+class Window;
 class Camera {
 private:
 
@@ -28,8 +32,9 @@ public:
 	float yaw;
 	float counter = 0.f;
 
+	glm::mat4* Camera::getView();
+	
 	void update(float dt, float y);
 
-	glm::mat4* getView();
-	glm::mat4* getProj();
+	glm::mat4* Camera::getProj(glm::ivec2 size);
 };

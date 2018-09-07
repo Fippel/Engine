@@ -2,7 +2,8 @@
 #include "engine.hpp"
 
 int main(int argcc, char* argv[]) {
-	printf("Booting up engine!\n");
-
+	//printf("Booting up engine!\n");
+	//
 	return Engine::getInstance()->run();
+	//return 0;
 }

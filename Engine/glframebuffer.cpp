@@ -33,6 +33,10 @@ GLFrameBuffer & GLFrameBuffer::addDepth(unsigned int key, unsigned int x, unsign
 	return *this;
 }
 
+int GLFrameBuffer::getNumberOfTextures() {
+	return _textures.size();
+}
+
 GLFrameBuffer& GLFrameBuffer::bind() {
 	glBindFramebuffer(GL_FRAMEBUFFER, _fbo);
 	return *this;

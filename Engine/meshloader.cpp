@@ -83,7 +83,7 @@ Mesh * MeshLoader::processMesh(aiMesh * mesh, const aiScene * scene) {
 }
 
 void MeshLoader::processNode(aiNode* node, const aiScene* scene, Model& models) {
-	printf("NumMeshes in asScene: %u\n", scene->mNumMeshes);
+	//printf("NumMeshes in asScene: %u\n", scene->mNumMeshes);
 	for (GLuint i = 0; i < node->mNumMeshes; i++) {
 		aiMesh* mesh = scene->mMeshes[node->mMeshes[i]];
 		models.meshes.push_back(processMesh(mesh, scene));
@@ -95,8 +95,10 @@ void MeshLoader::processNode(aiNode* node, const aiScene* scene, Model& models) 
 Model MeshLoader::loadMesh(const char* path, bool hasModelMX) {
 	const aiScene* scene = aiImportFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
 	
-	if (!scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode)
+	if( !scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode ) {
 		printf("ERROR::ASSIMP::", aiGetErrorString());
+		printf("\n");
+	}
 	Model model;
 	processNode(scene->mRootNode, scene, model);
 

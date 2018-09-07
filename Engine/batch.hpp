@@ -6,15 +6,27 @@
 #include "window.hpp"
 #include <vector>
 
+struct GLFrameIndex {
+	GLFrameBuffer* buffer;
+	std::vector<bool> isDepth;
+	std::vector<int> texturePos;
+	std::vector<int> bindPos;
+};
+
 class Batch {
 private:
 	ShaderProgram* _pipeline;
 	std::vector<Model*> _models;
-	GLFrameBuffer* _FBO;
+	GLFrameBuffer* _outputFBO;
 	unsigned int _nrOfTextures;
 	bool _FBOBound;
 	int _textureIndices[4];
+
 	
+
+	std::vector<GLFrameIndex> _inputFBO;
+	
+
 	struct ShaderInput {
 		int id;
 		int type;
@@ -46,6 +58,7 @@ public:
 	void addTexture(Texture::TextureFormat type, int width, int height);
 	void addDepthTexture(int width, int height);
 	void FBOFinalize();
+	void addFBOInput(GLFrameIndex frameIndex);
 	void render(Window* window);
 	void setTextureIndices(int diffuse, int specular, int ambient, int normalmap);
 	void registerModel(Model* m);

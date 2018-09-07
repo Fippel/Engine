@@ -50,7 +50,7 @@ void Engine::_initWorld() {
 	_testBatch->FBOFinalize();
 	_testBatch->setTextureIndices(6, 0, 0, 0);
 	_testBatch->addInput(1, _camera.getView());
-	_testBatch->addInput(2, _camera.getProj());
+	_testBatch->addInput(2, _camera.getProj(_window.get()->getSizes()));
 	_testBatch->addInput(25, new int(6));
 	
 	_waterFBO = new GLFrameBuffer();
@@ -76,9 +76,7 @@ void Engine::_initWorld() {
 	//	.addDepth(2, _window->getWidth(), _window->getHeight())
 	//	.finalize();
 	//
-	_testBatch->registerModel(new Model((_meshLoader->loadMesh("assets/models/sponza.obj", true))));
 	////_models.back().updateModelMatrix(glm::vec3(0, 0, 0), glm::vec3(0.3f));
-	_models.push_back(_meshLoader->loadMesh("assets/models/sponza.obj", true));
 	//_models.push_back(Terrain(glm::vec3(0, -10, 0), 100, "assets/textures/heightmap5.bmp", _textureLoader->loadTexture("assets/textures/grass.png")).getModel());
 	_terrains.push_back(Terrain(glm::vec3(0, -10, 0), 100, "assets/textures/heightmap5.bmp", _textureLoader->loadTexture("assets/textures/grass.png")));
 	//_waters.push_back(Terrain(glm::vec3(10, -3, 10), 80, "", nullptr).getModel());
@@ -187,7 +185,7 @@ int Engine::run() {
 
 			
 			_camera.getView();
-			_camera.getProj();
+			_camera.getProj(_window.get()->getSizes());
 			_testBatch->render(_window.get());
 		}
 

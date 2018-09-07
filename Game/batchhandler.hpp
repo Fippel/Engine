@@ -1,7 +1,8 @@
 #pragma once
+#include <map>
+#include <string>
 #include "batch.hpp"
 #include "window.hpp"
-#include <map>
 
 class BatchHandler {
 private:

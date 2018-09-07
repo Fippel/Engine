@@ -1,4 +1,5 @@
 #include "batchhandler.hpp"
+#include "batch.hpp"
 
 BatchHandler::BatchHandler() {
 	_nrOfBatches = 0;
@@ -27,6 +28,6 @@ void BatchHandler::removeBatch(std::string batchName) {
 
 void BatchHandler::render(Window* window) {
 	for (std::map<std::string, Batch*>::iterator it = _batches.begin(); it!=_batches.end(); ++it) {
-		it->second->render(window);
+		((Batch*)(it->second))->render(window);
 	}
 }

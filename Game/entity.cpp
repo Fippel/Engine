@@ -7,6 +7,14 @@ Entity::Entity(std::string name) {
 Entity::~Entity() {
 }
 
+bool Entity::dead() {
+	return _isDead;
+}
+
+void Entity::kill() {
+	_isDead = true;
+}
+
 void Entity::setup(unsigned int index, EntityHandler* eh, BatchHandler* bh) {
 	_index = index;
 	_bh = bh;
@@ -23,4 +31,26 @@ EntityHandler* Entity::getEH() {
 
 BatchHandler* Entity::getBH() {
 	return _bh;
+}
+
+void Entity::addComponent(Component* comp) {
+	_comps.push_back(comp);
+}
+
+void Entity::removeComponent(std::string name) {
+	for (int i = 0; i < _comps.size(); i++) {
+		if (_comps[i]->getName() == name) {
+			delete _comps[i];
+			_comps[i] = _comps[_comps.size()-1];
+			_comps.pop_back();
+		}
+	}
+}
+
+Component* Entity::getComponent(std::string name) {
+	for (int i = 0; i<_comps.size(); i++) {
+		if (_comps[i]->getName()==name)
+			return _comps[i];
+	}
+	return nullptr;
 }
