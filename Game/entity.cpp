@@ -15,10 +15,11 @@ void Entity::kill() {
 	_isDead = true;
 }
 
-void Entity::setup(unsigned int index, EntityHandler* eh, BatchHandler* bh) {
+void Entity::setup(unsigned int index, EntityHandler* eh, BatchHandler* bh, FileLoader* fl) {
 	_index = index;
 	_bh = bh;
 	_eh = eh;
+	_fl = fl;
 }
 
 std::string Entity::getName() {
@@ -33,7 +34,13 @@ BatchHandler* Entity::getBH() {
 	return _bh;
 }
 
+FileLoader* Entity::getFL() {
+	return _fl;
+}
+
 void Entity::addComponent(Component* comp) {
+	comp->setParent(this);
+	comp->initialize();
 	_comps.push_back(comp);
 }
 
@@ -53,4 +60,10 @@ Component* Entity::getComponent(std::string name) {
 			return _comps[i];
 	}
 	return nullptr;
+}
+
+void Entity::update(double dt) {
+	for(int i = 0; i < this->_comps.size(); i++) {
+		_comps[i]->update(dt);
+	}
 }

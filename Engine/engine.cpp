@@ -166,7 +166,7 @@ int Engine::run() {
 			}
 		}
 
-		_camera.update(deltaTime, _terrains[0].getHeight(_camera.position.x, _camera.position.z));
+		_camera.update(deltaTime, _terrains[0].getHeight(_camera.position.x, _camera.position.z), _window.get());
 
 		{	//Geometry pass
 			//glEnable(GL_CLIP_DISTANCE0);

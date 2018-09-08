@@ -3,8 +3,20 @@
 #include "glrenderer.hpp"
 #include "camera.hpp"
 
+#include "gamecontroller.hpp"
+
+void GameEngine::_initialize() {
+	Entity* e = new Entity("GameController");
+	e->setup(0, _eh, _bh, _fl);
+	GameController* gc = new GameController();
+	e->addComponent(gc);
+	_eh->add(e);
+}
+
 GameEngine::GameEngine() {
 	_bh = new BatchHandler();
+	_fl = new FileLoader();
+	_eh = new EntityHandler(_bh, _fl);
 	_window = new Window("Meow"); // NAMN PLOX :D
 }
 
@@ -12,6 +24,7 @@ GameEngine::~GameEngine() {
 	delete _bh;
 	delete _window;
 }
+
 
 void GameEngine::run() {
 
@@ -25,54 +38,55 @@ void GameEngine::run() {
 	MeshLoader* ml = new MeshLoader();
 
 	Batch* b = new Batch();
-	b->createPipeline("../Engine/assets/shaders/geometryPass.vert", "../Engine/assets/shaders/geometryPass.frag");
-	b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
-	b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
-	b->addTexture(Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight());
-	b->addDepthTexture(_window->getWidth(), _window->getHeight());
-	b->FBOFinalize();
-	b->setTextureIndices(6, 0, 0, 0);
-	b->addInput(1, c.getView());
-	b->addInput(2, c.getProj(_window->getSizes()));
-	b->addInput(25, new int(6));
-
-	Model m = ml->loadMesh("assets/models/sponza.obj", true);
-	b->registerModel(&m);
-
-	_bh->addBatch(b, "TESTBITCH");
-
-
-
 	Batch* lightingPass = new Batch();
-	lightingPass->createPipeline("../Engine/assets/shaders/lightingPass.vert", "../Engine/assets/shaders/lightingPass.frag");
+	//Model m = ml->loadMesh("assets/models/sponza.obj", true);
 	Model quad;
-	quad.meshes.push_back(ml->getQuad());
-	lightingPass->registerModel(&quad);
-	lightingPass->addInput(20, new int(0));
-	lightingPass->addInput(21, new int(1));
-	lightingPass->addInput(22, new int(2));
-	lightingPass->addInput(23, new int(3));
-	GLFrameIndex gfi;
-	gfi.buffer = b->getFBO();
-	gfi.texturePos.push_back(0);
-	gfi.bindPos.push_back(0);
-	gfi.isDepth.push_back(false);
-	gfi.texturePos.push_back(1);
-	gfi.bindPos.push_back(1);
-	gfi.isDepth.push_back(false);
-	gfi.texturePos.push_back(2);
-	gfi.bindPos.push_back(2);
-	gfi.isDepth.push_back(false);
+	//SETUP SHIT
+	{
+		b->createPipeline("../Engine/assets/shaders/geometryPass.vert", "../Engine/assets/shaders/geometryPass.frag");
+		b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
+		b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
+		b->addTexture(Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight());
+		b->addDepthTexture(_window->getWidth(), _window->getHeight());
+		b->FBOFinalize();
+		b->setTextureIndices(6, 0, 0, 0);
+		b->addInput(1, c.getView());
+		b->addInput(2, c.getProj(_window->getSizes()));
+		b->addInput(25, new int(6));
 
-	gfi.isDepth.push_back(true);
-	gfi.texturePos.push_back(3);
-	gfi.bindPos.push_back(3);
+		//b->registerModel(&m);
 
-	lightingPass->addFBOInput(gfi);
-
-	_bh->addBatch(lightingPass, "Lighting Pass");
+		_bh->addBatch(b, "TESTBITCH");
 
 
+
+		lightingPass->createPipeline("../Engine/assets/shaders/lightingPass.vert", "../Engine/assets/shaders/lightingPass.frag");
+		quad.meshes.push_back(ml->getQuad());
+		lightingPass->registerModel(&quad);
+		lightingPass->addInput(20, new int(0));
+		lightingPass->addInput(21, new int(1));
+		lightingPass->addInput(22, new int(2));
+		lightingPass->addInput(23, new int(3));
+		GLFrameIndex gfi;
+		gfi.buffer = b->getFBO();
+		gfi.texturePos.push_back(0);
+		gfi.bindPos.push_back(0);
+		gfi.isDepth.push_back(false);
+		gfi.texturePos.push_back(1);
+		gfi.bindPos.push_back(1);
+		gfi.isDepth.push_back(false);
+		gfi.texturePos.push_back(2);
+		gfi.bindPos.push_back(2);
+		gfi.isDepth.push_back(false);
+
+		gfi.isDepth.push_back(true);
+		gfi.texturePos.push_back(3);
+		gfi.bindPos.push_back(3);
+
+		lightingPass->addFBOInput(gfi);
+
+		_bh->addBatch(lightingPass, "Lighting Pass");
+	}
 
 
 
@@ -80,12 +94,18 @@ void GameEngine::run() {
 
 	Uint64 NOW = SDL_GetPerformanceCounter();
 	Uint64 LAST = 0;
-	double deltaTime;
+	double deltaTime = 0.0f;
 
 	bool quit = false;
 
+	_initialize();
+
 	while( !quit ) {
 
+		_eh->update(deltaTime);
+
+		c.getView();
+		c.update(deltaTime, 1, _window);
 		b->render(_window);
 		lightingPass->render(_window);
 
@@ -154,8 +174,9 @@ void GameEngine::run() {
 			
 		}
 
-		//TEST
 
 		SDL_GL_SwapWindow(_window->getWindow());
 	}
+
+	//TEST
 }

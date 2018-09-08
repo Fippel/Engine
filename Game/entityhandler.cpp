@@ -1,16 +1,17 @@
 #include "entityhandler.hpp"
 
-EntityHandler::EntityHandler() {
+EntityHandler::EntityHandler(BatchHandler* bh, FileLoader* fl) {
+	this->_bh = bh;
 	this->currentIndex = 0;
+	this->_fl = fl;
 }
 
 EntityHandler::~EntityHandler() {
-	
 }
 
 unsigned int EntityHandler::add(Entity* ent) {
 	_entities[currentIndex] = ent;
-	ent->setup(currentIndex++, this, _bh);
+	ent->setup(currentIndex++, this, _bh, _fl);
 	return 0;
 }
 
@@ -31,4 +32,10 @@ std::vector<Entity*> EntityHandler::getEntity(std::string name) {
 
 Entity* EntityHandler::getEntity(unsigned int index) {
 	return _entities[index];
+}
+
+void EntityHandler::update(double dt) {
+	for(std::map<unsigned int, Entity*>::iterator it = _entities.begin(); it != _entities.end(); ++it) {
+		it->second->update(dt);
+	}
 }

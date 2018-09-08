@@ -34,7 +34,7 @@ public:
 
 	glm::mat4* Camera::getView();
 	
-	void update(float dt, float y);
+	void update(float dt, float y, Window* w);
 
 	glm::mat4* Camera::getProj(glm::ivec2 size);
 };

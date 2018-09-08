@@ -92,15 +92,15 @@ void MeshLoader::processNode(aiNode* node, const aiScene* scene, Model& models) 
 		processNode(node->mChildren[i], scene, models);
 }
 
-Model MeshLoader::loadMesh(const char* path, bool hasModelMX) {
+Model* MeshLoader::loadMesh(const char* path, bool hasModelMX) {
 	const aiScene* scene = aiImportFile(path, aiProcess_Triangulate | aiProcess_FlipUVs);
 	
 	if( !scene || scene->mFlags & AI_SCENE_FLAGS_INCOMPLETE || !scene->mRootNode ) {
 		printf("ERROR::ASSIMP::", aiGetErrorString());
 		printf("\n");
 	}
-	Model model;
-	processNode(scene->mRootNode, scene, model);
+	Model* model = new Model();
+	processNode(scene->mRootNode, scene, *model);
 
 	return model;
 }

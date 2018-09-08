@@ -16,25 +16,46 @@
     <Filter Include="Header Files\Base">
       <UniqueIdentifier>{da2488dd-dfdf-4978-8605-9054d5931e75}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\BaseFiles">
+      <UniqueIdentifier>{b0dca1ea-d09c-48ba-8255-1480f33828fb}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\main">
+      <UniqueIdentifier>{a71b48e1-b112-45a9-b8de-fffc903318e4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Components">
+      <UniqueIdentifier>{3d105f87-3870-4617-91cf-096d0d740f4b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components">
+      <UniqueIdentifier>{d2772752-0dec-4708-b594-7106b1e69b0f}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="batchhandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="entityhandler.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="gameengine.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\BaseFiles</Filter>
     </ClCompile>
     <ClCompile Include="component.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\BaseFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="entity.cpp">
+      <Filter>Source Files\BaseFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="entityhandler.cpp">
+      <Filter>Source Files\BaseFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="gameengine.cpp">
+      <Filter>Source Files\BaseFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>Source Files\main</Filter>
+    </ClCompile>
+    <ClCompile Include="gamecontroller.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="meshcomponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
+    <ClCompile Include="fileloader.cpp">
+      <Filter>Source Files\BaseFiles</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -51,6 +72,18 @@
       <Filter>Header Files\Base</Filter>
     </ClInclude>
     <ClInclude Include="component.hpp">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="gamecontroller.hpp">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="playercomponent.hpp">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="meshcomponent.hpp">
+      <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="fileloader.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
   </ItemGroup>

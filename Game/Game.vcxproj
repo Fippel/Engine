@@ -127,15 +127,22 @@
     <ClCompile Include="component.cpp" />
     <ClCompile Include="entity.cpp" />
     <ClCompile Include="entityhandler.cpp" />
+    <ClCompile Include="fileloader.cpp" />
+    <ClCompile Include="gamecontroller.cpp" />
     <ClCompile Include="gameengine.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="meshcomponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="batchhandler.hpp" />
     <ClInclude Include="component.hpp" />
     <ClInclude Include="entity.hpp" />
     <ClInclude Include="entityhandler.hpp" />
+    <ClInclude Include="fileloader.hpp" />
+    <ClInclude Include="gamecontroller.hpp" />
     <ClInclude Include="gameengine.hpp" />
+    <ClInclude Include="meshcomponent.hpp" />
+    <ClInclude Include="playercomponent.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">
