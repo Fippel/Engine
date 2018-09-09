@@ -11,3 +11,7 @@ FileLoader::~FileLoader() {
 Model * FileLoader::loadModel(const char* path, bool hasModelMX) {
 	return _ml->loadMesh(path, hasModelMX);
 }
+
+MeshLoader* FileLoader::getML() {
+	return _ml;
+}

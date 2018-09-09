@@ -28,6 +28,12 @@
     <Filter Include="Header Files\Components">
       <UniqueIdentifier>{d2772752-0dec-4708-b594-7106b1e69b0f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\Components\Loaders">
+      <UniqueIdentifier>{12fd9677-9336-4c83-95d1-12e8cb2ae29f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Components\Loaders">
+      <UniqueIdentifier>{e17aef4d-db2c-4d49-9187-0650f84776d0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="batchhandler.cpp">
@@ -85,6 +91,9 @@
     </ClInclude>
     <ClInclude Include="fileloader.hpp">
       <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="maploader.hpp">
+      <Filter>Header Files\Components\Loaders</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

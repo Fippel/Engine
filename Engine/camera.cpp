@@ -14,10 +14,11 @@ void Camera::update(float dt, float y, Window* w) {
 			yaw -= prev.x * 0.001f;
 			float hpi = glm::half_pi<float>() - 0.001;
 			pitch = glm::clamp(pitch, -hpi, hpi);
+			//yaw = glm::clamp(yaw, -1.0f, 1.0f);
 			SDL_WarpMouseInWindow(w->getWindow(), sizes.x / 2, sizes.y / 2);
 		}
 	}
-	float speed = 350.f;
+	float speed = 500.f;
 	if (pressedShift)
 		speed *= 30;
 	

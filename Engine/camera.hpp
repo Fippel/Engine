@@ -29,7 +29,7 @@ public:
 	float zNear = 0.1f;
 	float zFar = 100.f;
 	float pitch;
-	float yaw;
+	float yaw = 0.0f;
 	float counter = 0.f;
 
 	glm::mat4* Camera::getView();

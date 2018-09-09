@@ -141,6 +141,7 @@
     <ClInclude Include="fileloader.hpp" />
     <ClInclude Include="gamecontroller.hpp" />
     <ClInclude Include="gameengine.hpp" />
+    <ClInclude Include="maploader.hpp" />
     <ClInclude Include="meshcomponent.hpp" />
     <ClInclude Include="playercomponent.hpp" />
   </ItemGroup>

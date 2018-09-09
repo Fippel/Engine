@@ -11,6 +11,7 @@ void GameEngine::_initialize() {
 	GameController* gc = new GameController();
 	e->addComponent(gc);
 	_eh->add(e);
+
 }
 
 GameEngine::GameEngine() {
@@ -18,6 +19,8 @@ GameEngine::GameEngine() {
 	_fl = new FileLoader();
 	_eh = new EntityHandler(_bh, _fl);
 	_window = new Window("Meow"); // NAMN PLOX :D
+
+	std::make_unique<GLRenderer>(_window->getWindow());
 }
 
 GameEngine::~GameEngine() {
@@ -29,19 +32,15 @@ GameEngine::~GameEngine() {
 void GameEngine::run() {
 
 
-	std::make_unique<GLRenderer>(_window->getWindow());
-
 	Camera c;
 	c.position = glm::vec3(0, 0, 0);
 
 	//TEST
-	MeshLoader* ml = new MeshLoader();
+	//SETUP SHIT
 
 	Batch* b = new Batch();
 	Batch* lightingPass = new Batch();
-	//Model m = ml->loadMesh("assets/models/sponza.obj", true);
 	Model quad;
-	//SETUP SHIT
 	{
 		b->createPipeline("../Engine/assets/shaders/geometryPass.vert", "../Engine/assets/shaders/geometryPass.frag");
 		b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
@@ -61,7 +60,7 @@ void GameEngine::run() {
 
 
 		lightingPass->createPipeline("../Engine/assets/shaders/lightingPass.vert", "../Engine/assets/shaders/lightingPass.frag");
-		quad.meshes.push_back(ml->getQuad());
+		quad.meshes.push_back(_fl->getML()->getQuad());
 		lightingPass->registerModel(&quad);
 		lightingPass->addInput(20, new int(0));
 		lightingPass->addInput(21, new int(1));
