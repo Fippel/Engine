@@ -92,8 +92,5 @@
     <ClInclude Include="fileloader.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="maploader.hpp">
-      <Filter>Header Files\Components\Loaders</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>

@@ -1,5 +1,6 @@
 #include "meshcomponent.hpp"
 #include "entity.hpp"
+#include "entityhandler.hpp"
 
 MeshComponent::MeshComponent() {
 	this->_name = "MeshComponent";
