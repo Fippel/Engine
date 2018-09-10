@@ -6,9 +6,12 @@ BatchHandler::BatchHandler() {
 }
 
 BatchHandler::~BatchHandler() {
+	std::vector<std::string> batchnames;
 	for (std::map<std::string, Batch*>::iterator it = _batches.begin(); it!=_batches.end(); ++it) {
-		this->removeBatch(it->first);
+		batchnames.push_back(it->first);
 	}
+	for(int i = 0; i < batchnames.size(); i++)
+		removeBatch(batchnames[i]);
 }
 
 std::string BatchHandler::addBatch(Batch* batch, std::string name) {

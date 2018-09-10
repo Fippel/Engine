@@ -26,7 +26,7 @@ void MeshComponent::loadModel(std::string filePath) {
 }
 
 void MeshComponent::update(double dt) {
-	_pos.x += 0.1 * dt;
+	//_pos.x += 0.1 * dt;
 	_model->updateModelMatrix(_pos, _scale);
 	//printf("%f\n", fps);
 }

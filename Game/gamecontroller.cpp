@@ -15,7 +15,7 @@ GameController::~GameController() {
 void GameController::initialize() {
 	MeshComponent* mc = new MeshComponent();
 	_parent->addComponent(mc);
-	mc->loadModel("assets/models/testarena.obj");
+	mc->loadModel("assets/models/ARENA_unfished.obj");
 
 	Entity* testbro = new Entity("Test");
 	mc = new MeshComponent();
