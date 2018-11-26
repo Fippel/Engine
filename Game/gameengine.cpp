@@ -55,7 +55,7 @@ void GameEngine::run() {
 
 		//b->registerModel(&m);
 
-		_bh->addBatch(b, "TESTBITCH");
+		_bh->addBatch(b, "TESTBITCH", 2);
 
 
 
@@ -84,7 +84,7 @@ void GameEngine::run() {
 
 		lightingPass->addFBOInput(gfi);
 
-		_bh->addBatch(lightingPass, "Lighting Pass");
+		_bh->addBatch(lightingPass, "Lighting Pass", 10);
 	}
 
 
@@ -105,8 +105,9 @@ void GameEngine::run() {
 
 		c.getView();
 		c.update(deltaTime, 1, _window);
-		b->render(_window);
-		lightingPass->render(_window);
+		//b->render(_window);
+		//lightingPass->render(_window);
+		_bh->render(_window);
 
 		LAST = NOW;
 		NOW = SDL_GetPerformanceCounter();

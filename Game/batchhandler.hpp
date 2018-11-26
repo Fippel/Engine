@@ -4,15 +4,26 @@
 #include "batch.hpp"
 #include "window.hpp"
 
+
+
 class BatchHandler {
 private:
 	 std::map<std::string, Batch*> _batches;
 	 int _nrOfBatches;
+
+	 struct Node {
+		 Node() { batch = nullptr; next = nullptr; }
+		 Batch* batch;
+		 Node* next;
+	 };
+
+	 Node* _nodes[20];
+
 public:
 	BatchHandler();
 	~BatchHandler();
 
-	std::string addBatch(Batch* batch, std::string name);
+	std::string addBatch(Batch* batch, std::string name, int index);
 	Batch* getBatch(std::string batchName);
 	void removeBatch(std::string batchName);
 
