@@ -130,8 +130,10 @@
     <ClCompile Include="fileloader.cpp" />
     <ClCompile Include="gamecontroller.cpp" />
     <ClCompile Include="gameengine.cpp" />
+    <ClCompile Include="gamestate.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="meshcomponent.cpp" />
+    <ClCompile Include="state.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="batchhandler.hpp" />
@@ -141,8 +143,10 @@
     <ClInclude Include="fileloader.hpp" />
     <ClInclude Include="gamecontroller.hpp" />
     <ClInclude Include="gameengine.hpp" />
+    <ClInclude Include="gamestate.hpp" />
     <ClInclude Include="meshcomponent.hpp" />
     <ClInclude Include="playercomponent.hpp" />
+    <ClInclude Include="state.hpp" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Engine\Engine.vcxproj">

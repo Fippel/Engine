@@ -63,6 +63,12 @@
     <ClCompile Include="fileloader.cpp">
       <Filter>Source Files\BaseFiles</Filter>
     </ClCompile>
+    <ClCompile Include="state.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="gamestate.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="batchhandler.hpp">
@@ -80,9 +86,6 @@
     <ClInclude Include="component.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
-    <ClInclude Include="gamecontroller.hpp">
-      <Filter>Header Files\Components</Filter>
-    </ClInclude>
     <ClInclude Include="playercomponent.hpp">
       <Filter>Header Files\Components</Filter>
     </ClInclude>
@@ -90,6 +93,15 @@
       <Filter>Header Files\Components</Filter>
     </ClInclude>
     <ClInclude Include="fileloader.hpp">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="gamecontroller.hpp">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="state.hpp">
+      <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="gamestate.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
   </ItemGroup>

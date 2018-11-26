@@ -13,18 +13,13 @@ GameController::~GameController() {
 }
 
 void GameController::initialize() {
-	MeshComponent* mc = new MeshComponent();
-	_parent->addComponent(mc);
-	mc->loadModel("assets/models/ARENA_unfished.obj");
+	_state = new GameState();
+	_state->initialize(_parent->getBH(), _parent->getEH());
 
-	Entity* testbro = new Entity("Test");
-	mc = new MeshComponent();
-	_parent->getEH()->add(testbro);
-	testbro->addComponent(mc);
-	mc->loadModel("assets/models/bunny.obj");
-	
+
 }
 
 void GameController::update(double dt) {
 	//printf("%f\n", 1.0f / dt);
+	_state->update(dt);
 }
