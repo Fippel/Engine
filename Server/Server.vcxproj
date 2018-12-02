@@ -20,9 +20,10 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>15.0</VCProjectVersion>
-    <ProjectGuid>{4B389792-BAAC-4522-B302-AFF4E6FACEAB}</ProjectGuid>
-    <RootNamespace>Game</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.16299.0</WindowsTargetPlatformVersion>
+    <ProjectGuid>{6CB35824-0C50-4A18-AF22-8C07154C929F}</ProjectGuid>
+    <RootNamespace>Server</RootNamespace>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
+    <ProjectName>LoginServer</ProjectName>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -75,16 +76,8 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
-      <ConformanceMode>false</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)\Engine;$(SolutionDir)\include;%(AddionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <ConformanceMode>true</ConformanceMode>
     </ClCompile>
-    <Link>
-      <AdditionalDependencies>assimp.lib;SDL2.lib;SDL2_image.lib;SDL2main.lib;%(AdditionalDependencies)</AdditionalDependencies>
-      <AdditionalLibraryDirectories>$(SolutionDir)/lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <EntryPointSymbol>
-      </EntryPointSymbol>
-      <SubSystem>Console</SubSystem>
-    </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -123,35 +116,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="batchhandler.cpp" />
-    <ClCompile Include="component.cpp" />
-    <ClCompile Include="entity.cpp" />
-    <ClCompile Include="entityhandler.cpp" />
-    <ClCompile Include="fileloader.cpp" />
-    <ClCompile Include="gamecontroller.cpp" />
-    <ClCompile Include="gameengine.cpp" />
-    <ClCompile Include="gamestate.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="meshcomponent.cpp" />
-    <ClCompile Include="state.cpp" />
+    <ClCompile Include="connection.cpp" />
+    <ClCompile Include="server.cpp" />
+    <ClCompile Include="Source.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="batchhandler.hpp" />
-    <ClInclude Include="component.hpp" />
-    <ClInclude Include="entity.hpp" />
-    <ClInclude Include="entityhandler.hpp" />
-    <ClInclude Include="fileloader.hpp" />
-    <ClInclude Include="gamecontroller.hpp" />
-    <ClInclude Include="gameengine.hpp" />
-    <ClInclude Include="gamestate.hpp" />
-    <ClInclude Include="meshcomponent.hpp" />
-    <ClInclude Include="playercomponent.hpp" />
-    <ClInclude Include="state.hpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Engine\Engine.vcxproj">
-      <Project>{8dbcaeb2-2d1e-4626-9992-4bbe741d528b}</Project>
-    </ProjectReference>
+    <ClInclude Include="connection.hpp" />
+    <ClInclude Include="server.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
