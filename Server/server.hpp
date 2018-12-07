@@ -14,7 +14,7 @@
 
 class Server {
 private:
-	SOCKET _tmpSock = INVALID_SOCKET;
+	Connection tmpConnection;
 	SOCKET _lSocket = INVALID_SOCKET;
 	struct addrinfo* _result = NULL, *ptr = NULL, hints;
 	std::thread* _listenThread = nullptr;

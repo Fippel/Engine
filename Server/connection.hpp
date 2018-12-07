@@ -15,10 +15,13 @@
 struct Connection {
 private:
 	SOCKET sock;
+	sockaddr addr;
 	CONNID id;
 public:
-	Connection(SOCKET sock, CONNID id);
+	Connection(SOCKET sock, sockaddr addr, CONNID id);
+	Connection() {}
 	void close();
-	SOCKET getSocket();
+	SOCKET* getSocket();
+	sockaddr* getAddr();
 	CONNID getID();
 };
