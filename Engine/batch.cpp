@@ -112,12 +112,15 @@ void Batch::render(Window* window) {
 	_bind();
 	glViewport(0, 0, window->getWidth(), window->getHeight());
 	glClearColor(0, 0, 0, 1);
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	if(_models.size() <= 1)
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 	// OPTIMERINGAR TYP AVSTÅND TILL KAMERA
 	for (int i = 0; i < _models.size(); i++) {
-		if( _outputFBO->getNumberOfTextures() != 0 )
-			_pipeline->setValue(0, _models[i]->model);
+		if (_outputFBO->getNumberOfTextures() != 0) {
+			if(_outputFBO->getNumberOfTextures() == 3)
+				_pipeline->setValue(0, _models[i]->model);
+		}
 		for (int j = 0; j < _models[i]->meshes.size(); j++) {
 			if (_models[i]->meshes[j]->getTextures().size() > 0) {
 				Texture tex = _models[i]->meshes[j]->getTextures().at("diffuseTexture");

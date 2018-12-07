@@ -3,6 +3,9 @@
 #include "entityhandler.hpp"
 #include "fileloader.hpp"
 
+
+#include "textdata.hpp"
+
 class GameEngine {
 private:
 	Window* _window;
@@ -11,6 +14,7 @@ private:
 	EntityHandler* _eh;
 	FileLoader* _fl;
 
+	freetype ft;
 
 	void _initialize();
 public:

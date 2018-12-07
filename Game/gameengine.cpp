@@ -5,12 +5,16 @@
 
 #include "gamecontroller.hpp"
 
+
+
 void GameEngine::_initialize() {
 	Entity* e = new Entity("GameController");
 	e->setup(0, _eh, _bh, _fl);
 	GameController* gc = new GameController();
 	e->addComponent(gc);
 	_eh->add(e);
+
+	
 
 }
 
@@ -30,7 +34,7 @@ GameEngine::~GameEngine() {
 
 
 void GameEngine::run() {
-
+	
 
 	Camera c;
 	c.position = glm::vec3(0, 0, 0);
@@ -38,9 +42,19 @@ void GameEngine::run() {
 	//TEST
 	//SETUP SHIT
 
+	ft.initFreetype();
+	ft.setupBuffers();
+	ft.loadCharacters();
+
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
 	Batch* b = new Batch();
 	Batch* lightingPass = new Batch();
+	Batch* textPass = new Batch();
 	Model quad;
+	Model tmpm = ft.generateText("aldrig att detta kommer funka", 100, 200, 1.0, glm::vec3(1, 0, 0));
+	Model tmpmp = ft.generateText("nu skriver jag en till grej", 100, 400, 1.0, glm::vec3(1, 0, 0));
 	{
 		b->createPipeline("../Engine/assets/shaders/geometryPass.vert", "../Engine/assets/shaders/geometryPass.frag");
 		b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
@@ -60,6 +74,8 @@ void GameEngine::run() {
 
 
 		lightingPass->createPipeline("../Engine/assets/shaders/lightingPass.vert", "../Engine/assets/shaders/lightingPass.frag");
+		//lightingPass->addTexture(Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight());
+		//lightingPass->FBOFinalize();
 		quad.meshes.push_back(_fl->getML()->getQuad());
 		lightingPass->registerModel(&quad);
 		lightingPass->addInput(20, new int(0));
@@ -87,7 +103,27 @@ void GameEngine::run() {
 		_bh->addBatch(lightingPass, "Lighting Pass", 10);
 	}
 
-
+	{
+		textPass->createPipeline("assets/shaders/textPass.vert", "assets/shaders/textPass.frag");
+		glm::mat4 projection = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f);
+		textPass->addInput(33, &projection);
+		textPass->addInput(20, new int(9));
+		//textPass->addInput(21, new int(10));
+		textPass->setTextureIndices(9, 0, 0, 0);
+		
+		//GLFrameIndex gfi;
+		//gfi.buffer = lightingPass->getFBO();
+		//gfi.texturePos.push_back(0);
+		//gfi.bindPos.push_back(10);
+		//gfi.isDepth.push_back(false);
+		
+		
+		_bh->addBatch(textPass, "Text Pass", 12);
+		//textPass->registerModel(&quad);
+		textPass->registerModel(&tmpm);
+		textPass->registerModel(&tmpmp);
+	}
+	
 
 	SDL_Event event;
 

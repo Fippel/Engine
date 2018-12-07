@@ -1,238 +1,235 @@
 ﻿  batch.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\glframebuffer.hpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-c:\users\dennis persson\desktop\engine\engine\engine\batch.cpp(115): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
+d:\engine\engine\glframebuffer.hpp(22): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
+d:\engine\engine\batch.cpp(131): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   camera.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\glframebuffer.hpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): warning C4473: 'printf' : not enough arguments passed for format string
-  c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
-  c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): note: the missing variadic argument 1 is required by format string '%s'
-c:\users\dennis persson\desktop\engine\engine\engine\camera.cpp(17): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
+d:\engine\engine\glframebuffer.hpp(22): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
+d:\engine\engine\glrenderer.hpp(38): warning C4473: 'printf' : not enough arguments passed for format string
+  d:\engine\engine\glrenderer.hpp(38): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
+  d:\engine\engine\glrenderer.hpp(38): note: the missing variadic argument 1 is required by format string '%s'
+d:\engine\engine\camera.cpp(15): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
   engine.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\glframebuffer.hpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): warning C4473: 'printf' : not enough arguments passed for format string
-  c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
-  c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): note: the missing variadic argument 1 is required by format string '%s'
-c:\users\dennis persson\desktop\engine\engine\engine\engine.cpp(171): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
+d:\engine\engine\glframebuffer.hpp(22): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
+d:\engine\engine\glrenderer.hpp(38): warning C4473: 'printf' : not enough arguments passed for format string
+  d:\engine\engine\glrenderer.hpp(38): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
+  d:\engine\engine\glrenderer.hpp(38): note: the missing variadic argument 1 is required by format string '%s'
+d:\engine\engine\engine.cpp(169): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
   glframebuffer.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\glframebuffer.hpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
+d:\engine\engine\glframebuffer.hpp(22): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
+d:\engine\engine\glframebuffer.cpp(37): warning C4267: 'return': conversion from 'size_t' to 'int', possible loss of data
   glrenderer.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\glframebuffer.hpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): warning C4473: 'printf' : not enough arguments passed for format string
-  c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
-  c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): note: the missing variadic argument 1 is required by format string '%s'
-c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.cpp(54): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.cpp(72): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.cpp(92): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.cpp(111): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
+d:\engine\engine\glframebuffer.hpp(22): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
+d:\engine\engine\glrenderer.hpp(38): warning C4473: 'printf' : not enough arguments passed for format string
+  d:\engine\engine\glrenderer.hpp(38): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
+  d:\engine\engine\glrenderer.hpp(38): note: the missing variadic argument 1 is required by format string '%s'
+d:\engine\engine\glrenderer.cpp(54): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+d:\engine\engine\glrenderer.cpp(72): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+d:\engine\engine\glrenderer.cpp(92): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+d:\engine\engine\glrenderer.cpp(111): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
   gltexture.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
   main.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\glframebuffer.hpp(21): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
-c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): warning C4473: 'printf' : not enough arguments passed for format string
-  c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
-  c:\users\dennis persson\desktop\engine\engine\engine\glrenderer.hpp(38): note: the missing variadic argument 1 is required by format string '%s'
+d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
+d:\engine\engine\glframebuffer.hpp(22): warning C4267: 'argument': conversion from 'size_t' to 'const unsigned int', possible loss of data
+d:\engine\engine\glrenderer.hpp(38): warning C4473: 'printf' : not enough arguments passed for format string
+  d:\engine\engine\glrenderer.hpp(38): note: placeholders and their parameters expect 1 variadic arguments, but 0 were provided
+  d:\engine\engine\glrenderer.hpp(38): note: the missing variadic argument 1 is required by format string '%s'
   mesh.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
+d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
   meshloader.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\meshloader.cpp(99): warning C4474: 'printf' : too many arguments passed for format string
-  c:\users\dennis persson\desktop\engine\engine\engine\meshloader.cpp(99): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
-  shaderprogram.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\shaderprogram.hpp(17): warning C4091: 'static ': ignored on left of 'const ShaderProgram::ShaderType' when no variable is declared
+d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
+d:\engine\engine\meshloader.cpp(99): warning C4474: 'printf' : too many arguments passed for format string
+  d:\engine\engine\meshloader.cpp(99): note: placeholders and their parameters expect 0 variadic arguments, but 1 were provided
   terrain.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\terrain.cpp(45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
+d:\engine\engine\mesh.hpp(22): warning C4091: 'static ': ignored on left of 'const Mesh::BindingLocation' when no variable is declared
+d:\engine\engine\terrain.cpp(45): warning C4244: '=': conversion from 'double' to 'float', possible loss of data
   textureloader.cpp
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(29): warning C4091: 'static ': ignored on left of 'const Texture::TextureFormat' when no variable is declared
+d:\engine\engine\gltexture.hpp(114): warning C4244: 'argument': conversion from 'T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'const T' to 'GLsizei', possible loss of data
           with
           [
               T=float
           ]
-c:\users\dennis persson\desktop\engine\engine\engine\gltexture.hpp(127): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
+d:\engine\engine\gltexture.hpp(128): warning C4244: 'argument': conversion from 'T' to 'GLint', possible loss of data
           with
           [
               T=float
           ]
-  window.cpp
-  glad.c
   Generating code
-  1592 of 1595 functions (99.8%) were compiled, the rest were copied from previous compilation.
-    7 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
+  1406 of 1521 functions (92.4%) were compiled, the rest were copied from previous compilation.
+    77 functions were new in current compilation
+    2 functions had inline decision re-evaluated but remain unchanged
   Finished generating code
-  Engine.vcxproj -> C:\Users\Dennis Persson\Desktop\Engine\Engine\x64\Release\Engine.exe
+  Engine.vcxproj -> D:\Engine\x64\Release\Engine.exe

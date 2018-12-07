@@ -1,0 +1,23 @@
+﻿  batchhandler.cpp
+d:\engine\game\batchhandler.hpp(4): fatal error C1083: Cannot open include file: 'batch.hpp': No such file or directory
+  component.cpp
+  entity.cpp
+d:\engine\game\batchhandler.hpp(4): fatal error C1083: Cannot open include file: 'batch.hpp': No such file or directory
+  entityhandler.cpp
+d:\engine\game\batchhandler.hpp(4): fatal error C1083: Cannot open include file: 'batch.hpp': No such file or directory
+  fileloader.cpp
+d:\engine\game\fileloader.hpp(2): fatal error C1083: Cannot open include file: 'meshloader.hpp': No such file or directory
+  gamecontroller.cpp
+d:\engine\game\batchhandler.hpp(4): fatal error C1083: Cannot open include file: 'batch.hpp': No such file or directory
+  gameengine.cpp
+d:\engine\game\batchhandler.hpp(4): fatal error C1083: Cannot open include file: 'batch.hpp': No such file or directory
+  gamestate.cpp
+d:\engine\game\batchhandler.hpp(4): fatal error C1083: Cannot open include file: 'batch.hpp': No such file or directory
+  main.cpp
+d:\engine\game\batchhandler.hpp(4): fatal error C1083: Cannot open include file: 'batch.hpp': No such file or directory
+  meshcomponent.cpp
+d:\engine\game\meshcomponent.hpp(4): fatal error C1083: Cannot open include file: 'mesh.hpp': No such file or directory
+  state.cpp
+d:\engine\game\batchhandler.hpp(4): fatal error C1083: Cannot open include file: 'batch.hpp': No such file or directory
+  textdata.cpp
+d:\engine\game\textdata.hpp(3): fatal error C1083: Cannot open include file: 'ft2build.h': No such file or directory
