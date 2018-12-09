@@ -55,8 +55,9 @@ void GameEngine::run() {
 	Model quad;
 	Model tmpm = ft.generateText("aldrig att detta kommer funka", 100, 200, 1.0, glm::vec3(1, 0, 0));
 	Model tmpmp = ft.generateText("nu skriver jag en till grej", 100, 400, 1.0, glm::vec3(1, 0, 0));
+	glm::mat4 projection = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f);
 	{
-		b->createPipeline("../Engine/assets/shaders/geometryPass.vert", "../Engine/assets/shaders/geometryPass.frag");
+		b->createPipeline("assets/shaders/geometryPass.vert", "assets/shaders/geometryPass.frag");
 		b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
 		b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
 		b->addTexture(Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight());
@@ -66,14 +67,33 @@ void GameEngine::run() {
 		b->addInput(1, c.getView());
 		b->addInput(2, c.getProj(_window->getSizes()));
 		b->addInput(25, new int(6));
-
+		
 		//b->registerModel(&m);
 
 		_bh->addBatch(b, "TESTBITCH", 2);
 
+		textPass->createPipeline("assets/shaders/textPass.vert", "assets/shaders/textPass.frag");
+		textPass->addTexture(Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight());
+		textPass->FBOFinalize();
+		
+		textPass->addInput(33, &projection);
+		textPass->addInput(20, new int(9));
+		//textPass->addInput(21, new int(10));
+		textPass->setTextureIndices(9, 0, 0, 0);
+
+		//GLFrameIndex gfi;
+		//gfi.buffer = lightingPass->getFBO();
+		//gfi.texturePos.push_back(0);
+		//gfi.bindPos.push_back(10);
+		//gfi.isDepth.push_back(false);
 
 
-		lightingPass->createPipeline("../Engine/assets/shaders/lightingPass.vert", "../Engine/assets/shaders/lightingPass.frag");
+		_bh->addBatch(textPass, "Text Pass", 7);
+		//textPass->registerModel(&quad);
+		textPass->registerModel(&tmpm);
+		textPass->registerModel(&tmpmp);
+
+		lightingPass->createPipeline("assets/shaders/lightingPass.vert", "assets/shaders/lightingPass.frag");
 		//lightingPass->addTexture(Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight());
 		//lightingPass->FBOFinalize();
 		quad.meshes.push_back(_fl->getML()->getQuad());
@@ -82,6 +102,8 @@ void GameEngine::run() {
 		lightingPass->addInput(21, new int(1));
 		lightingPass->addInput(22, new int(2));
 		lightingPass->addInput(23, new int(3));
+		lightingPass->addInput(25, new int(5));
+		/////textPass->getFBO()->getTexture(0).bind(5);
 		GLFrameIndex gfi;
 		gfi.buffer = b->getFBO();
 		gfi.texturePos.push_back(0);
@@ -98,30 +120,15 @@ void GameEngine::run() {
 		gfi.texturePos.push_back(3);
 		gfi.bindPos.push_back(3);
 
-		lightingPass->addFBOInput(gfi);
+		
 
+		lightingPass->addFBOInput(gfi);
+		lightingPass->clearFlag = false;
 		_bh->addBatch(lightingPass, "Lighting Pass", 10);
 	}
 
 	{
-		textPass->createPipeline("assets/shaders/textPass.vert", "assets/shaders/textPass.frag");
-		glm::mat4 projection = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f);
-		textPass->addInput(33, &projection);
-		textPass->addInput(20, new int(9));
-		//textPass->addInput(21, new int(10));
-		textPass->setTextureIndices(9, 0, 0, 0);
 		
-		//GLFrameIndex gfi;
-		//gfi.buffer = lightingPass->getFBO();
-		//gfi.texturePos.push_back(0);
-		//gfi.bindPos.push_back(10);
-		//gfi.isDepth.push_back(false);
-		
-		
-		_bh->addBatch(textPass, "Text Pass", 12);
-		//textPass->registerModel(&quad);
-		textPass->registerModel(&tmpm);
-		textPass->registerModel(&tmpmp);
 	}
 	
 

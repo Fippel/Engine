@@ -27,7 +27,7 @@ public:
 	std::string getName();
 	EntityHandler* getEH();
 	BatchHandler* getBH();
-	FileLoader* Entity::getFL();
+	FileLoader* getFL();
 	//--------------------
 
 	void addComponent(Component* comp);

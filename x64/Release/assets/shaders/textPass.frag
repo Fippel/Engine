@@ -5,7 +5,7 @@ out vec4 color;
 
 layout (location = 20) uniform sampler2D text;
 //layout (location = 21) uniform sampler2D lightInput;
-out vec4 fragColor;
+layout (location = 0) out vec4 fragColor;
 //uniform vec3 textColor;
 
 void main()

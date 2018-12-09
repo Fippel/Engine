@@ -33,6 +33,10 @@ GLFrameBuffer & GLFrameBuffer::addDepth(unsigned int key, unsigned int x, unsign
 	return *this;
 }
 
+Texture GLFrameBuffer::getTexture(int index) {
+	return _textures[index]->getLocation();
+}
+
 int GLFrameBuffer::getNumberOfTextures() {
 	return _textures.size();
 }

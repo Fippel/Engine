@@ -9,6 +9,6 @@ public:
 	~FileLoader();
 
 	Model* loadModel(const char* path, bool hasModelMX);
-	MeshLoader* FileLoader::getML();
+	MeshLoader* getML();
 	//loadfile() ??? Probs want this shite.
 };

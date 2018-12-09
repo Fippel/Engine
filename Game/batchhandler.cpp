@@ -63,6 +63,9 @@ void BatchHandler::render(Window* window) {
 	for(int i = 0; i < 20; i++) {
 		next = _nodes[i];
 		while (next != nullptr) {
+			if (i == 10) {
+				_batches["Text Pass"]->getFBO()->getTexture(0).bind(5);
+			}
 			next->batch->render(window);
 			next = next->next;
 		}

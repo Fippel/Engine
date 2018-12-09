@@ -53,7 +53,7 @@ private:
 public:
 	Batch();
 	~Batch();
-
+	bool clearFlag = true;
 	void createPipeline(std::string vs, std::string fs, std::string gs = "", std::string cs = "");
 	void addTexture(Texture::TextureFormat type, int width, int height);
 	void addDepthTexture(int width, int height);

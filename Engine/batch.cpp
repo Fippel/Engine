@@ -112,9 +112,12 @@ void Batch::render(Window* window) {
 	_bind();
 	glViewport(0, 0, window->getWidth(), window->getHeight());
 	glClearColor(0, 0, 0, 1);
-	if(_models.size() <= 1)
+	//if(_models.size() <= 1)
+	//if(clearFlag)
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
+
+
 	// OPTIMERINGAR TYP AVSTÅND TILL KAMERA
 	for (int i = 0; i < _models.size(); i++) {
 		if (_outputFBO->getNumberOfTextures() != 0) {
