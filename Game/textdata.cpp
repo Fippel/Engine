@@ -1,5 +1,12 @@
 #include "textdata.hpp"
 #include "glm/glm.hpp"
+freetype* freetype::_instance = 0;
+
+freetype * freetype::getInstance() {
+	if (!_instance)
+		_instance = new freetype();
+	return _instance;
+}
 
 void freetype::initFreetype() {
 		if (FT_Init_FreeType(&_ft))

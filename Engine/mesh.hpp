@@ -80,6 +80,7 @@ struct Box {
 };
 
 struct Model {
+	int id = -1;
 	std::vector<Mesh*> meshes;
 	//std::string directory;
 	

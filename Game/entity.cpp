@@ -47,9 +47,9 @@ Component* Entity::getComponent(std::string name) {
 	return nullptr;
 }
 
-void Entity::keyPress(SDL_Keycode key) {
+void Entity::keyPress(SDL_Event event) {
 	for (int i = 0; i < this->_comps.size(); i++) {
-		_comps[i]->keyPress(key);
+		_comps[i]->keyPress(event);
 	}
 }
 

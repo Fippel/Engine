@@ -28,6 +28,6 @@ public:
 	void removeComponent(std::string name);
 	Component* getComponent(std::string name);
 
-	void keyPress(SDL_Keycode key);
+	void keyPress(SDL_Event event);
 	void update(double dt);
 };

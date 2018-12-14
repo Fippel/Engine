@@ -14,7 +14,7 @@ private:
 	EntityHandler* _eh;
 	FileLoader* _fl;
 
-	freetype ft;
+	freetype* ft;
 
 	void _initialize();
 public:

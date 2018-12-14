@@ -25,6 +25,6 @@ public:
 	Entity* getEntity(unsigned int index);
 	void addNewEntities();
 
-	void keyboardInput(SDL_Keycode key);
+	void keyboardInput(SDL_Event key);
 	void update(double dt);
 };

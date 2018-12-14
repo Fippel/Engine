@@ -72,6 +72,9 @@
     <ClCompile Include="textdata.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="textcomponent.cpp">
+      <Filter>Source Files\Components</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="batchhandler.hpp">
@@ -109,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="textdata.hpp">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textcomponent.hpp">
+      <Filter>Header Files\Components</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

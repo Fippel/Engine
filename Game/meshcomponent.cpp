@@ -34,12 +34,12 @@ void MeshComponent::update(double dt) {
 }
 
 void MeshComponent::keyPress(SDL_Keycode key) {
-	if (key == SDLK_SPACE) {
-		Entity* ent = new Entity("testnamn");
-		MeshComponent* mc = new MeshComponent();
-		mc->loadModel("assets/models/ARENA_unfished.obj");
-		mc->_pos = glm::vec3(10, 10, 10);
-		ent->addComponent(mc);
-		EntityHandler::getInstance()->add(ent);
-	}
+	//if (key == SDLK_SPACE) {
+	//	Entity* ent = new Entity("testnamn");
+	//	MeshComponent* mc = new MeshComponent();
+	//	mc->loadModel("assets/models/ARENA_unfished.obj");
+	//	mc->_pos = glm::vec3(10, 10, 10);
+	//	ent->addComponent(mc);
+	//	EntityHandler::getInstance()->add(ent);
+	//}
 }

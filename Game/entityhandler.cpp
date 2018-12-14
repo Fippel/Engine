@@ -49,7 +49,7 @@ void EntityHandler::addNewEntities() {
 	_newEntities.clear();
 }
 
-void EntityHandler::keyboardInput(SDL_Keycode key) {
+void EntityHandler::keyboardInput(SDL_Event key) {
 
 	for (std::map<unsigned int, Entity*>::iterator it = _entities.begin(); it != _entities.end(); ++it) {
 		it->second->keyPress(key);

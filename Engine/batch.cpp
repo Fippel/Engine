@@ -145,7 +145,18 @@ void Batch::setTextureIndices(int diffuse, int specular, int ambient, int normal
 }
 
 void Batch::registerModel(Model* m) {
+	m->id = _currID++;
 	_models.push_back(m);
+}
+
+void Batch::removeModel(Model * m) {
+	std::vector<Model*>::iterator it = _models.begin();
+	for (int i = 0; i < _models.size(); i++) {
+		if (_models[i]->id == m->id) {
+			_models.erase(it + i);
+			break;
+		}
+	}
 }
 
 GLFrameBuffer* Batch::getFBO() {

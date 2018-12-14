@@ -8,6 +8,8 @@
 
 class freetype {
 private:
+	static freetype* _instance;
+	freetype() {}
 	FT_Library _ft;
 	FT_Face _face; // font
 	struct Character {
@@ -19,6 +21,8 @@ private:
 	std::map<GLchar, Character> _characters;
 	GLuint _VAO, _VBO;
 public:
+	static freetype* getInstance();
+
 	void initFreetype();
 	void setupBuffers();
 	void loadCharacters();

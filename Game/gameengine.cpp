@@ -2,6 +2,7 @@
 #include "meshloader.hpp"
 #include "glrenderer.hpp"
 #include "camera.hpp"
+#include "textcomponent.hpp"
 
 #include "gamecontroller.hpp"
 
@@ -12,8 +13,11 @@ void GameEngine::_initialize() {
 	e->setup(0);
 	GameController* gc = new GameController();
 	e->addComponent(gc);
-	_eh->add(e);
+	TextComponent* tc = new TextComponent();
+	e->addComponent(tc);
 
+	_eh->add(e);
+	
 	
 
 }
@@ -24,7 +28,7 @@ GameEngine::GameEngine() {
 	_fl = FileLoader::getInstance();
 	_eh = EntityHandler::getInstance();
 	_window = new Window("Meow"); // NAMN PLOX :D
-
+	ft = freetype::getInstance();
 	std::make_unique<GLRenderer>(_window->getWindow());
 }
 
@@ -42,9 +46,9 @@ void GameEngine::run() {
 	//TEST
 	//SETUP SHIT
 
-	ft.initFreetype();
-	ft.setupBuffers();
-	ft.loadCharacters();
+	ft->initFreetype();
+	ft->setupBuffers();
+	ft->loadCharacters();
 
 	glEnable(GL_BLEND);
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
@@ -54,8 +58,8 @@ void GameEngine::run() {
 	Batch* textPass = new Batch();
 	Batch* finalPass = new Batch();
 	Model quad;
-	Model tmpm = ft.generateText("aldrig att detta kommer funka", 100, 200, 1.0, glm::vec3(1, 0, 0));
-	Model tmpmp = ft.generateText("nu skriver jag en till grej", 100, 400, 1.0, glm::vec3(1, 0, 0));
+	Model tmpm = ft->generateText("aldrig att detta kommer funka", 100, 200, 1.0, glm::vec3(1, 0, 0));
+	Model tmpmp = ft->generateText("nu skriver jag en till grej", 100, 400, 1.0, glm::vec3(1, 0, 0));
 	{
 		b->createPipeline("assets/shaders/geometryPass.vert", "assets/shaders/geometryPass.frag");
 		b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
@@ -172,7 +176,7 @@ void GameEngine::run() {
 			if (event.type == SDL_QUIT)
 				quit = true;
 
-			_eh->keyboardInput(event.key.keysym.sym);
+			_eh->keyboardInput(event);
 			switch (event.key.keysym.sym) {
 			case SDLK_ESCAPE:
 				quit = true;

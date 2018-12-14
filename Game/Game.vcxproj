@@ -22,7 +22,7 @@
     <VCProjectVersion>15.0</VCProjectVersion>
     <ProjectGuid>{4B389792-BAAC-4522-B302-AFF4E6FACEAB}</ProjectGuid>
     <RootNamespace>Game</RootNamespace>
-    <WindowsTargetPlatformVersion>10.0.17134.0</WindowsTargetPlatformVersion>
+    <WindowsTargetPlatformVersion>10.0.17763.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -140,6 +140,7 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="meshcomponent.cpp" />
     <ClCompile Include="state.cpp" />
+    <ClCompile Include="textcomponent.cpp" />
     <ClCompile Include="textdata.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -154,6 +155,7 @@
     <ClInclude Include="meshcomponent.hpp" />
     <ClInclude Include="playercomponent.hpp" />
     <ClInclude Include="state.hpp" />
+    <ClInclude Include="textcomponent.hpp" />
     <ClInclude Include="textdata.hpp" />
   </ItemGroup>
   <ItemGroup>
