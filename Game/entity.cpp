@@ -15,27 +15,12 @@ void Entity::kill() {
 	_isDead = true;
 }
 
-void Entity::setup(unsigned int index, EntityHandler* eh, BatchHandler* bh, FileLoader* fl) {
+void Entity::setup(unsigned int index) {
 	_index = index;
-	_bh = bh;
-	_eh = eh;
-	_fl = fl;
 }
 
 std::string Entity::getName() {
 	return _name;
-}
-
-EntityHandler* Entity::getEH() {
-	return _eh;
-}
-
-BatchHandler* Entity::getBH() {
-	return _bh;
-}
-
-FileLoader* Entity::getFL() {
-	return _fl;
 }
 
 void Entity::addComponent(Component* comp) {
@@ -60,6 +45,12 @@ Component* Entity::getComponent(std::string name) {
 			return _comps[i];
 	}
 	return nullptr;
+}
+
+void Entity::keyPress(SDL_Keycode key) {
+	for (int i = 0; i < this->_comps.size(); i++) {
+		_comps[i]->keyPress(key);
+	}
 }
 
 void Entity::update(double dt) {

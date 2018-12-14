@@ -14,4 +14,5 @@ public:
 	void initialize();
 	void loadModel(std::string filePath);
 	void update(double dt);
+	void keyPress(SDL_Keycode key);
 };

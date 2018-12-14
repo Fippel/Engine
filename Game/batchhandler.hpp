@@ -8,6 +8,10 @@
 
 class BatchHandler {
 private:
+
+	static BatchHandler* _instance; // Singleton mode
+	BatchHandler();
+
 	 std::map<std::string, Batch*> _batches;
 	 int _nrOfBatches;
 
@@ -20,7 +24,8 @@ private:
 	 Node* _nodes[20];
 
 public:
-	BatchHandler();
+	//BatchHandler();
+	static BatchHandler* getInstance();
 	~BatchHandler();
 
 	std::string addBatch(Batch* batch, std::string name, int index);

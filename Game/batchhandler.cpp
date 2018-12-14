@@ -1,8 +1,16 @@
 #include "batchhandler.hpp"
 #include "batch.hpp"
 
+BatchHandler* BatchHandler::_instance = 0;
+
 BatchHandler::BatchHandler() {
 	_nrOfBatches = 0;
+}
+
+BatchHandler* BatchHandler::getInstance() {
+	if (!_instance)
+		_instance = new BatchHandler();
+	return _instance;
 }
 
 BatchHandler::~BatchHandler() {
@@ -63,9 +71,6 @@ void BatchHandler::render(Window* window) {
 	for(int i = 0; i < 20; i++) {
 		next = _nodes[i];
 		while (next != nullptr) {
-			if (i == 10) {
-				_batches["Text Pass"]->getFBO()->getTexture(0).bind(5);
-			}
 			next->batch->render(window);
 			next = next->next;
 		}

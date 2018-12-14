@@ -9,7 +9,7 @@ public:
 	GameState();
 	~GameState();
 
-	void initialize(BatchHandler* bh, EntityHandler* eh);
+	void initialize();
 	void update(double dt);
 	void destroy();
 };

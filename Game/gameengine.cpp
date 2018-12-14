@@ -9,7 +9,7 @@
 
 void GameEngine::_initialize() {
 	Entity* e = new Entity("GameController");
-	e->setup(0, _eh, _bh, _fl);
+	e->setup(0);
 	GameController* gc = new GameController();
 	e->addComponent(gc);
 	_eh->add(e);
@@ -19,9 +19,10 @@ void GameEngine::_initialize() {
 }
 
 GameEngine::GameEngine() {
-	_bh = new BatchHandler();
-	_fl = new FileLoader();
-	_eh = new EntityHandler(_bh, _fl);
+	//_bh = new BatchHandler();
+	_bh = BatchHandler::getInstance();
+	_fl = FileLoader::getInstance();
+	_eh = EntityHandler::getInstance();
 	_window = new Window("Meow"); // NAMN PLOX :D
 
 	std::make_unique<GLRenderer>(_window->getWindow());
@@ -34,7 +35,6 @@ GameEngine::~GameEngine() {
 
 
 void GameEngine::run() {
-	
 
 	Camera c;
 	c.position = glm::vec3(0, 0, 0);
@@ -52,10 +52,10 @@ void GameEngine::run() {
 	Batch* b = new Batch();
 	Batch* lightingPass = new Batch();
 	Batch* textPass = new Batch();
+	Batch* finalPass = new Batch();
 	Model quad;
 	Model tmpm = ft.generateText("aldrig att detta kommer funka", 100, 200, 1.0, glm::vec3(1, 0, 0));
 	Model tmpmp = ft.generateText("nu skriver jag en till grej", 100, 400, 1.0, glm::vec3(1, 0, 0));
-	glm::mat4 projection = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f);
 	{
 		b->createPipeline("assets/shaders/geometryPass.vert", "assets/shaders/geometryPass.frag");
 		b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
@@ -75,7 +75,7 @@ void GameEngine::run() {
 		textPass->createPipeline("assets/shaders/textPass.vert", "assets/shaders/textPass.frag");
 		textPass->addTexture(Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight());
 		textPass->FBOFinalize();
-		
+		glm::mat4 projection = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f);
 		textPass->addInput(33, &projection);
 		textPass->addInput(20, new int(9));
 		//textPass->addInput(21, new int(10));
@@ -103,7 +103,7 @@ void GameEngine::run() {
 		lightingPass->addInput(22, new int(2));
 		lightingPass->addInput(23, new int(3));
 		lightingPass->addInput(25, new int(5));
-		/////textPass->getFBO()->getTexture(0).bind(5);
+
 		GLFrameIndex gfi;
 		gfi.buffer = b->getFBO();
 		gfi.texturePos.push_back(0);
@@ -120,17 +120,42 @@ void GameEngine::run() {
 		gfi.texturePos.push_back(3);
 		gfi.bindPos.push_back(3);
 
-		
-
 		lightingPass->addFBOInput(gfi);
+
+		GLFrameIndex textGfi;
+		textGfi.buffer = textPass->getFBO();
+		textGfi.texturePos.push_back(0);
+		textGfi.bindPos.push_back(5);
+		textGfi.isDepth.push_back(false);
+
+		lightingPass->addFBOInput(textGfi);
+
 		lightingPass->clearFlag = false;
 		_bh->addBatch(lightingPass, "Lighting Pass", 10);
-	}
 
-	{
-		
+		//finalPass->createPipeline("assets/shaders/finalPass.vert", "assets/shaders/finalPass.frag");
+		//finalPass->registerModel(&quad);
+		//finalPass->addInput(20, new int(0));
+		//finalPass->addInput(21, new int(1));
+		//
+		//GLFrameIndex textGfi;
+		//textGfi.buffer = textPass->getFBO();
+		//textGfi.texturePos.push_back(0);
+		//textGfi.bindPos.push_back(1);
+		//textGfi.isDepth.push_back(false);
+		//
+		//finalPass->addFBOInput(textGfi);
+		//
+		//GLFrameIndex lightingGfi;
+		//lightingGfi.buffer = lightingPass->getFBO();
+		//lightingGfi.texturePos.push_back(0);
+		//lightingGfi.bindPos.push_back(0);
+		//lightingGfi.isDepth.push_back(false);
+		//
+		//finalPass->addFBOInput(lightingGfi);
+		//
+		//_bh->addBatch(lightingPass, "Final Pass", 20);
 	}
-	
 
 	SDL_Event event;
 
@@ -143,25 +168,12 @@ void GameEngine::run() {
 	_initialize();
 
 	while( !quit ) {
-
-		_eh->update(deltaTime);
-
-		c.getView();
-		c.update(deltaTime, 1, _window);
-		//b->render(_window);
-		//lightingPass->render(_window);
-		_bh->render(_window);
-
-		LAST = NOW;
-		NOW = SDL_GetPerformanceCounter();
-
-		deltaTime = ((NOW - LAST) * 1000 / (double)SDL_GetPerformanceFrequency()) * 0.001;
-
-		while( SDL_PollEvent(&event) ) {
-			if( event.type == SDL_QUIT )
+		while (SDL_PollEvent(&event)) {
+			if (event.type == SDL_QUIT)
 				quit = true;
 
-			switch( event.key.keysym.sym ) {
+			_eh->keyboardInput(event.key.keysym.sym);
+			switch (event.key.keysym.sym) {
 			case SDLK_ESCAPE:
 				quit = true;
 				break;
@@ -184,7 +196,7 @@ void GameEngine::run() {
 				c.moveRight = true;
 				break;
 			case SDLK_LALT:
-				if( c.counter >= 1.f ) {
+				if (c.counter >= 1.f) {
 					c.enableMouse = !c.enableMouse;
 					SDL_ShowCursor(c.enableMouse);
 					c.counter = 0.f;
@@ -194,28 +206,43 @@ void GameEngine::run() {
 				break;
 			}
 
-			switch( event.type ) {
+			switch (event.type) {
 			case SDL_KEYUP:
-				if( event.key.keysym.sym == SDLK_LSHIFT )
+				if (event.key.keysym.sym == SDLK_LSHIFT)
 					c.pressedShift = false;
-				if( event.key.keysym.sym == SDLK_SPACE )
+				if (event.key.keysym.sym == SDLK_SPACE)
 					c.moveUp = false;
-				if( event.key.keysym.sym == SDLK_LCTRL )
+				if (event.key.keysym.sym == SDLK_LCTRL)
 					c.moveDown = false;
-				if( event.key.keysym.sym == SDLK_w )
+				if (event.key.keysym.sym == SDLK_w)
 					c.moveForward = false;
-				if( event.key.keysym.sym == SDLK_a )
+				if (event.key.keysym.sym == SDLK_a)
 					c.moveLeft = false;
-				if( event.key.keysym.sym == SDLK_s )
+				if (event.key.keysym.sym == SDLK_s)
 					c.moveBack = false;
-				if( event.key.keysym.sym == SDLK_d )
+				if (event.key.keysym.sym == SDLK_d)
 					c.moveRight = false;
 				break;
 			default:
 				break;
 			}
-			
+
 		}
+		_eh->addNewEntities();
+		_eh->update(deltaTime);
+
+		c.getView();
+		c.update(deltaTime, 1, _window);
+		//b->render(_window);
+		//lightingPass->render(_window);
+		_bh->render(_window);
+
+		LAST = NOW;
+		NOW = SDL_GetPerformanceCounter();
+
+		deltaTime = ((NOW - LAST) * 1000 / (double)SDL_GetPerformanceFrequency()) * 0.001;
+
+		
 
 
 		SDL_GL_SwapWindow(_window->getWindow());

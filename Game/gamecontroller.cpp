@@ -14,7 +14,7 @@ GameController::~GameController() {
 
 void GameController::initialize() {
 	_state = new GameState();
-	_state->initialize(_parent->getBH(), _parent->getEH());
+	_state->initialize();
 
 
 }
