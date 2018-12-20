@@ -75,8 +75,16 @@
     <ClCompile Include="gamestate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+<<<<<<< HEAD
     <ClCompile Include="client.cpp">
       <Filter>Source Files\Network</Filter>
+=======
+    <ClCompile Include="textdata.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="textcomponent.cpp">
+      <Filter>Source Files\Components</Filter>
+>>>>>>> freetype
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -113,8 +121,16 @@
     <ClInclude Include="gamestate.hpp">
       <Filter>Header Files\Base</Filter>
     </ClInclude>
+<<<<<<< HEAD
     <ClInclude Include="client.hpp">
       <Filter>Header Files\Network</Filter>
+=======
+    <ClInclude Include="textdata.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="textcomponent.hpp">
+      <Filter>Header Files\Components</Filter>
+>>>>>>> freetype
     </ClInclude>
   </ItemGroup>
 </Project>

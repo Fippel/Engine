@@ -15,6 +15,7 @@ layout(location = 1) uniform mat4 v;
 layout(location = 2) uniform mat4 p;
 
 void main() {
-	gl_Position = p * v * m * vec4(pos.x, 0.0, pos.y, 1.0);
-	vUV = vec2(pos.x/2.0 + 0.5, pos.y/2.0 + 0.5);
+	vPos = vec3(m * vec4(pos, 1)).xyz;
+	vUV = vec2(vPos.x/2.0 + 0.5, vPos.y/2.0 + 0.5);
+	gl_Position = p * v * m * vec4(vPos, 1);
 }

@@ -1,8 +1,16 @@
 #include "batchhandler.hpp"
 #include "batch.hpp"
 
+BatchHandler* BatchHandler::_instance = 0;
+
 BatchHandler::BatchHandler() {
 	_nrOfBatches = 0;
+}
+
+BatchHandler* BatchHandler::getInstance() {
+	if (!_instance)
+		_instance = new BatchHandler();
+	return _instance;
 }
 
 BatchHandler::~BatchHandler() {
@@ -31,10 +39,17 @@ BatchHandler::~BatchHandler() {
 std::string BatchHandler::addBatch(Batch* batch, std::string name, int index) {
 	_batches[name] = batch;
 
+	//Node* next = _nodes[index];
+	//while (next != nullptr)
+	//	next = next->next;
+	//
+	//next = new Node();
+	//next->batch = batch;
+
 	Node** next = &_nodes[index];
 	while (*next != nullptr)
 		next = &((*next)->next);
-
+	
 	*next = new Node();
 	(*next)->batch = batch;
 

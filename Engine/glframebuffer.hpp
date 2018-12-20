@@ -15,6 +15,7 @@ public:
 	GLFrameBuffer& addTexture(unsigned int key, std::shared_ptr<Texture> texture);
 	GLFrameBuffer& addTexture(unsigned int key, Texture::TextureFormat type, unsigned int x, unsigned int y);
 	GLFrameBuffer& addDepth(unsigned int key, unsigned int x, unsigned int y);
+	Texture getTexture(int index);
 	int getNumberOfTextures();
 	GLFrameBuffer& bind();
 	GLFrameBuffer& bindDepth(unsigned int key);

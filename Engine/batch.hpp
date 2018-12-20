@@ -15,6 +15,7 @@ struct GLFrameIndex {
 
 class Batch {
 private:
+	int _currID = 0;
 	ShaderProgram* _pipeline;
 	std::vector<Model*> _models;
 	GLFrameBuffer* _outputFBO;
@@ -53,7 +54,7 @@ private:
 public:
 	Batch();
 	~Batch();
-
+	bool clearFlag = true;
 	void createPipeline(std::string vs, std::string fs, std::string gs = "", std::string cs = "");
 	void addTexture(Texture::TextureFormat type, int width, int height);
 	void addDepthTexture(int width, int height);
@@ -62,6 +63,7 @@ public:
 	void render(Window* window);
 	void setTextureIndices(int diffuse, int specular, int ambient, int normalmap);
 	void registerModel(Model* m);
+	void removeModel(Model* m);
 	GLFrameBuffer* getFBO();
 	void addInput(int id, int32_t* value) { _input.push_back(new ShaderInputint32(id, value)); }
 	void addInput(int id, uint32_t* value) { _input.push_back(new ShaderInputuint32(id, value)); }

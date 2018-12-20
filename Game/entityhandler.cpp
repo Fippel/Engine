@@ -1,17 +1,24 @@
 #include "entityhandler.hpp"
 
-EntityHandler::EntityHandler(BatchHandler* bh, FileLoader* fl) {
-	this->_bh = bh;
-	this->currentIndex = 0;
-	this->_fl = fl;
+EntityHandler* EntityHandler::_instance = 0;
+
+EntityHandler::EntityHandler() {
+	currentIndex = 0;
+	currentNewIndex = 0;
 }
 
 EntityHandler::~EntityHandler() {
 }
 
+EntityHandler * EntityHandler::getInstance() {
+	if (!_instance)
+		_instance = new EntityHandler();
+	return _instance;
+}
+
 unsigned int EntityHandler::add(Entity* ent) {
-	_entities[currentIndex] = ent;
-	ent->setup(currentIndex++, this, _bh, _fl);
+	_newEntities[currentNewIndex++] = ent;
+	//ent->setup(currentNewIndex++);
 	return 0;
 }
 
@@ -32,6 +39,21 @@ std::vector<Entity*> EntityHandler::getEntity(std::string name) {
 
 Entity* EntityHandler::getEntity(unsigned int index) {
 	return _entities[index];
+}
+
+void EntityHandler::addNewEntities() {
+	for (std::map<unsigned int, Entity*>::iterator it = _newEntities.begin(); it != _newEntities.end(); ++it) {
+		_entities[currentIndex] = it->second;
+		it->second->setup(currentIndex++);
+	}
+	_newEntities.clear();
+}
+
+void EntityHandler::keyboardInput(SDL_Event key) {
+
+	for (std::map<unsigned int, Entity*>::iterator it = _entities.begin(); it != _entities.end(); ++it) {
+		it->second->keyPress(key);
+	}
 }
 
 void EntityHandler::update(double dt) {

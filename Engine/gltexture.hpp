@@ -119,6 +119,7 @@ private:
 	}
 public:
 	Texture();
+	Texture(GLuint texID);
 	Texture(const TextureFormat format, glm::vec2 size);
 	Texture(const std::string& path);
 	~Texture();

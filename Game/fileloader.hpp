@@ -4,11 +4,15 @@
 class FileLoader {
 private:
 	MeshLoader* _ml;
-public:
+
+	static FileLoader* _instance;
 	FileLoader();
+
+public:
 	~FileLoader();
 
+	static FileLoader* getInstance();
 	Model* loadModel(const char* path, bool hasModelMX);
-	MeshLoader* FileLoader::getML();
+	MeshLoader* getML();
 	//loadfile() ??? Probs want this shite.
 };

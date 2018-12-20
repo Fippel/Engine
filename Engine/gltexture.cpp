@@ -4,6 +4,10 @@ Texture::Texture() {
 
 }
 
+Texture::Texture(GLuint texID) {
+	_texture = texID;
+}
+
 Texture::Texture(const TextureFormat format, glm::vec2 size) {
 	_format = format;
 	_size = size;

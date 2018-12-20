@@ -4,6 +4,9 @@
 #include "fileloader.hpp"
 #include "client.hpp"
 
+
+#include "textdata.hpp"
+
 class GameEngine {
 private:
 	Window* _window;
@@ -13,6 +16,7 @@ private:
 	FileLoader* _fl;
 
 	Client _client;
+	freetype* ft;
 
 	void _initialize();
 public:

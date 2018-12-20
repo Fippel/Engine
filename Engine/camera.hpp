@@ -32,9 +32,9 @@ public:
 	float yaw = 0.0f;
 	float counter = 0.f;
 
-	glm::mat4* Camera::getView();
+	glm::mat4* getView();
 	
 	void update(float dt, float y, Window* w);
 
-	glm::mat4* Camera::getProj(glm::ivec2 size);
+	glm::mat4* getProj(glm::ivec2 size);
 };

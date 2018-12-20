@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include "SDL2/SDL.h"
 
 class Entity;
 
@@ -19,5 +20,6 @@ public:
 
 	void setParent(Entity* parent);
 	virtual void initialize() = 0;
+	virtual void keyPress(SDL_Event key) {}
 	virtual void update(double dt) = 0;
 };

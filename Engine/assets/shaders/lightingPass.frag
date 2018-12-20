@@ -14,6 +14,8 @@ layout(location = 23) uniform sampler2D depth;
 
 layout(location = 24) uniform sampler2D testTexture;
 
+layout(location = 25) uniform sampler2D textInput;
+
 void main() {
 	vec3 pos = texture(positions, vUV).xyz;
 	vec3 normal = texture(normals, vUV).xyz;
@@ -21,7 +23,12 @@ void main() {
 	//vec4 color = texture(diffuseTexture, vUV);
 
 	//fragColor = vec4(normal, 1);
-	fragColor = color;
+	
+	vec4 ti = texture(textInput, vUV);
+	if(ti.x == 1)
+		fragColor = ti;
+	else
+		fragColor = color;
 
 	// Texture test
 	//vec4 color = texture(testTexture, vUV);
