@@ -34,6 +34,12 @@
     <Filter Include="Header Files\Components\Loaders">
       <UniqueIdentifier>{e17aef4d-db2c-4d49-9187-0650f84776d0}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\Network">
+      <UniqueIdentifier>{b3b35333-9fad-4d8a-b488-5985ad95190d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Network">
+      <UniqueIdentifier>{b3dcea12-6329-4a5c-9385-0f4e41860ba6}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="batchhandler.cpp">
@@ -69,6 +75,9 @@
     <ClCompile Include="gamestate.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="client.cpp">
+      <Filter>Source Files\Network</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="batchhandler.hpp">
@@ -103,6 +112,9 @@
     </ClInclude>
     <ClInclude Include="gamestate.hpp">
       <Filter>Header Files\Base</Filter>
+    </ClInclude>
+    <ClInclude Include="client.hpp">
+      <Filter>Header Files\Network</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

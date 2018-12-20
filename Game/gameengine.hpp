@@ -2,6 +2,7 @@
 #include "batchhandler.hpp"
 #include "entityhandler.hpp"
 #include "fileloader.hpp"
+#include "client.hpp"
 
 class GameEngine {
 private:
@@ -11,6 +12,7 @@ private:
 	EntityHandler* _eh;
 	FileLoader* _fl;
 
+	Client _client;
 
 	void _initialize();
 public:

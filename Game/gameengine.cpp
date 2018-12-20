@@ -20,6 +20,8 @@ GameEngine::GameEngine() {
 	_eh = new EntityHandler(_bh, _fl);
 	_window = new Window("Meow"); // NAMN PLOX :D
 
+	_client.initialize("localhost", 123);
+
 	std::make_unique<GLRenderer>(_window->getWindow());
 }
 
