@@ -5,6 +5,9 @@ Entity::Entity(std::string name) {
 }
 
 Entity::~Entity() {
+	for (int i = 0; i < _comps.size(); i++) {
+		delete _comps[i];
+	}
 }
 
 bool Entity::dead() {

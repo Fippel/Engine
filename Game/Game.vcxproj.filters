@@ -46,6 +46,8 @@
     <ClCompile Include="movementcomponent.cpp">
       <Filter>Source Files\Components</Filter>
     </ClCompile>
+    <ClCompile Include="statehandler.cpp" />
+    <ClCompile Include="menustate.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="batchhandler.hpp">
@@ -92,6 +94,12 @@
     </ClInclude>
     <ClInclude Include="textcomponent.hpp">
       <Filter>Header Files\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="statehandler.hpp">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="menustate.hpp">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

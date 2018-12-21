@@ -114,9 +114,10 @@ void Batch::render(Window* window) {
 	glClearColor(0, 0, 0, 1);
 	//if(_models.size() <= 1)
 	//if(clearFlag)
-	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
-
+	if (!_isCleared) {
+		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+		_isCleared = true;
+	}
 
 	// OPTIMERINGAR TYP AVSTÅND TILL KAMERA
 	for (int i = 0; i < _models.size(); i++) {
@@ -130,6 +131,7 @@ void Batch::render(Window* window) {
 				tex.bind(_textureIndices[0]); 
 			}
 
+			_isCleared = false;
 			glBindVertexArray(_models[i]->meshes[j]->getVAO());
 			glDrawElements(GL_TRIANGLES, _models[i]->meshes[j]->getIndices().size(), GL_UNSIGNED_INT, nullptr);
 			glBindVertexArray(0);

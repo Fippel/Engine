@@ -2,6 +2,9 @@
 #include "batchhandler.hpp"
 #include "textdata.hpp"
 
+#include "statehandler.hpp"
+#include "gamestate.hpp"
+
 TextComponent::TextComponent() {
 	this->_name = "TextComponent";
 	this->_pos = glm::vec2(150, 150);
@@ -10,8 +13,10 @@ TextComponent::TextComponent() {
 }
 
 TextComponent::~TextComponent() {
-	if (this->_model)
+	if (this->_model) {
+		BatchHandler::getInstance()->getBatch("Text Pass")->removeModel(_model);
 		delete this->_model;
+	}
 }
 
 void TextComponent::initialize() {
@@ -26,18 +31,25 @@ void TextComponent::keyPress(SDL_Event event) {
 		SDL_Keycode key = event.key.keysym.sym;
 		std::string tmp = _text;
 
-		if (key == SDLK_a)
-			tmp += "a";
-		if (key == SDLK_n)
-			tmp += "n";
-		if (key == SDLK_l)
-			tmp += "l";
-		if (key == SDLK_d)
-			tmp += "d";
-		if (key == SDLK_s)
-			tmp += "s";
-		if (key == SDLK_i)
-			tmp += "i";
+		if (event.key.keysym.sym == SDLK_F10)
+			StateHandler::getInstance()->newState(new GameState());
+
+		if (event.key.keysym.sym == SDLK_BACKSPACE)
+			tmp = tmp.substr(0, tmp.size() - 1);
+		else
+			tmp += event.key.keysym.sym;
+		//if (key == SDLK_a)
+		//	tmp += "a";
+		//if (key == SDLK_n)
+		//	tmp += "n";
+		//if (key == SDLK_l)
+		//	tmp += "l";
+		//if (key == SDLK_d)
+		//	tmp += "d";
+		//if (key == SDLK_s)
+		//	tmp += "s";
+		//if (key == SDLK_i)
+		//	tmp += "i";
 
 		if (tmp != _text) {
 			_text = tmp;

@@ -7,6 +7,14 @@ EntityHandler::EntityHandler() {
 	currentNewIndex = 0;
 }
 
+void EntityHandler::_realClean() {
+	for (std::map<unsigned int, Entity*>::iterator it = _entities.begin(); it != _entities.end(); ++it) {
+		delete it->second;
+	}
+	_entities.clear();
+	_clean = false;
+}
+
 EntityHandler::~EntityHandler() {
 }
 
@@ -49,6 +57,10 @@ void EntityHandler::addNewEntities() {
 	_newEntities.clear();
 }
 
+void EntityHandler::clean() {
+	this->_clean = true;
+}
+
 void EntityHandler::keyboardInput(SDL_Event key) {
 
 	for (std::map<unsigned int, Entity*>::iterator it = _entities.begin(); it != _entities.end(); ++it) {
@@ -57,7 +69,12 @@ void EntityHandler::keyboardInput(SDL_Event key) {
 }
 
 void EntityHandler::update(double dt) {
+
+	if (_clean)
+		_realClean();
+
 	for(std::map<unsigned int, Entity*>::iterator it = _entities.begin(); it != _entities.end(); ++it) {
 		it->second->update(dt);
 	}
+
 }

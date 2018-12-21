@@ -6,6 +6,10 @@ State::State() {
 State::~State() {
 }
 
+StateType State::getType() {
+	return this->type;
+}
+
 void State::initialize() {
 }
 

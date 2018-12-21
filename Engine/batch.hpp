@@ -20,6 +20,7 @@ private:
 	std::vector<Model*> _models;
 	GLFrameBuffer* _outputFBO;
 	unsigned int _nrOfTextures;
+	bool _isCleared = true;
 	bool _FBOBound;
 	int _textureIndices[4];
 

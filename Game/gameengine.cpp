@@ -4,22 +4,25 @@
 #include "camera.hpp"
 #include "textcomponent.hpp"
 #include "movementcomponent.hpp"
-
+#include "statehandler.hpp"
 #include "gamecontroller.hpp"
-
+#include "menustate.hpp"
 
 
 void GameEngine::_initialize() {
-	Entity* e = new Entity("GameController");
-	e->setup(0);
-	GameController* gc = new GameController();
-	e->addComponent(gc);
-	TextComponent* tc = new TextComponent();
-	e->addComponent(tc);
-	MovementComponent* moc = new MovementComponent();
-	e->addComponent(moc);
+	//Entity* e = new Entity("GameController");
+	//e->setup(0);
+	//GameController* gc = new GameController();
+	//e->addComponent(gc);
+	//TextComponent* tc = new TextComponent();
+	//e->addComponent(tc);
+	//MovementComponent* moc = new MovementComponent();
+	//e->addComponent(moc);
+	//
+	//_eh->add(e);
 
-	_eh->add(e);
+	StateHandler::getInstance()->newState(new MenuState());
+
 }
 
 GameEngine::GameEngine() {
@@ -29,7 +32,7 @@ GameEngine::GameEngine() {
 	_eh = EntityHandler::getInstance();
 	_window = new Window("Meow"); // NAMN PLOX :D
 
-	_client.initialize("localhost", 123);
+	//_client.initialize("localhost", 123);
 
 	ft = freetype::getInstance();
 	std::make_unique<GLRenderer>(_window->getWindow());
@@ -97,8 +100,8 @@ void GameEngine::run() {
 
 		_bh->addBatch(textPass, "Text Pass", 7);
 		//textPass->registerModel(&quad);
-		textPass->registerModel(&tmpm);
-		textPass->registerModel(&tmpmp);
+		//textPass->registerModel(&tmpm);
+		//textPass->registerModel(&tmpmp);
 
 		lightingPass->createPipeline("assets/shaders/lightingPass.vert", "assets/shaders/lightingPass.frag");
 		//lightingPass->addTexture(Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight());
@@ -236,9 +239,9 @@ void GameEngine::run() {
 			}
 
 		}
-		_eh->addNewEntities();
+		
 		_eh->update(deltaTime);
-
+		_eh->addNewEntities();
 		c->getView();
 		c->update(deltaTime, 1, _window);
 		//b->render(_window);
