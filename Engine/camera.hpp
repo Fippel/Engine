@@ -9,8 +9,11 @@
 class Window;
 class Camera {
 private:
-
+	static Camera* _instance;
+	Camera();
 public:
+	static Camera* getInstance();
+	~Camera();
 	glm::ivec2 mousePos = { 0, 0 };
 	glm::vec3 position = { 0, 0, 0 };
 	glm::quat orientation;

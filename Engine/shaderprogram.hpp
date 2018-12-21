@@ -9,12 +9,13 @@ class ShaderProgram {
 private:
 	GLuint _program;
 public:
-	const static enum ShaderType  {
+	const enum ShaderType  {
 		VertexShader = GL_VERTEX_SHADER,
 		GeometryShader = GL_GEOMETRY_SHADER,
 		FragmentShader = GL_FRAGMENT_SHADER,
 		ComputeShader = GL_COMPUTE_SHADER
 	};
+
 	ShaderProgram();
 	ShaderProgram(const std::string& label);
 	~ShaderProgram();

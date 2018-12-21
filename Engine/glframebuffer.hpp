@@ -19,7 +19,7 @@ public:
 	int getNumberOfTextures();
 	GLFrameBuffer& bind();
 	GLFrameBuffer& bindDepth(unsigned int key);
-	inline std::shared_ptr<Texture>& operator[](size_t key) {
+	inline std::shared_ptr<Texture>& operator[](unsigned int key) {
 		return _textures[key];
 	}
 	void finalize();

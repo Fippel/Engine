@@ -114,7 +114,7 @@ void Batch::render(Window* window) {
 	glClearColor(0, 0, 0, 1);
 	//if(_models.size() <= 1)
 	//if(clearFlag)
-		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
 
 

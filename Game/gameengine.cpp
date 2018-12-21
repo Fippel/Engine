@@ -3,6 +3,7 @@
 #include "glrenderer.hpp"
 #include "camera.hpp"
 #include "textcomponent.hpp"
+#include "movementcomponent.hpp"
 
 #include "gamecontroller.hpp"
 
@@ -15,6 +16,8 @@ void GameEngine::_initialize() {
 	e->addComponent(gc);
 	TextComponent* tc = new TextComponent();
 	e->addComponent(tc);
+	MovementComponent* moc = new MovementComponent();
+	e->addComponent(moc);
 
 	_eh->add(e);
 }
@@ -40,12 +43,12 @@ GameEngine::~GameEngine() {
 
 void GameEngine::run() {
 
-	Camera c;
-	c.position = glm::vec3(0, 0, 0);
+	Camera* c = Camera::getInstance();
+	c->position = glm::vec3(0, 0, 0);
 
 	//TEST
 	//SETUP SHIT
-
+	printf("ASDASD");
 	ft->initFreetype();
 	ft->setupBuffers();
 	ft->loadCharacters();
@@ -60,6 +63,7 @@ void GameEngine::run() {
 	Model quad;
 	Model tmpm = ft->generateText("aldrig att detta kommer funka", 100, 200, 1.0, glm::vec3(1, 0, 0));
 	Model tmpmp = ft->generateText("nu skriver jag en till grej", 100, 400, 1.0, glm::vec3(1, 0, 0));
+	glm::mat4 projection = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f);
 	{
 		b->createPipeline("assets/shaders/geometryPass.vert", "assets/shaders/geometryPass.frag");
 		b->addTexture(Texture::TextureFormat::RGB32f, _window->getWidth(), _window->getHeight());
@@ -68,10 +72,10 @@ void GameEngine::run() {
 		b->addDepthTexture(_window->getWidth(), _window->getHeight());
 		b->FBOFinalize();
 		b->setTextureIndices(6, 0, 0, 0);
-		b->addInput(1, c.getView());
-		b->addInput(2, c.getProj(_window->getSizes()));
+		b->addInput(1, c->getView());
+		b->addInput(2, c->getProj(_window->getSizes()));
 		b->addInput(25, new int(6));
-		
+
 		//b->registerModel(&m);
 
 		_bh->addBatch(b, "TESTBITCH", 2);
@@ -79,11 +83,10 @@ void GameEngine::run() {
 		textPass->createPipeline("assets/shaders/textPass.vert", "assets/shaders/textPass.frag");
 		textPass->addTexture(Texture::TextureFormat::RGBA32f, _window->getWidth(), _window->getHeight());
 		textPass->FBOFinalize();
-		glm::mat4 projection = glm::ortho(0.0f, 1280.0f, 0.0f, 720.0f);
-		textPass->addInput(33, &projection);
+		textPass->setTextureIndices(9, 0, 0, 0);
+		textPass->addInput(17, &projection);
 		textPass->addInput(20, new int(9));
 		//textPass->addInput(21, new int(10));
-		textPass->setTextureIndices(9, 0, 0, 0);
 
 		//GLFrameIndex gfi;
 		//gfi.buffer = lightingPass->getFBO();
@@ -161,6 +164,7 @@ void GameEngine::run() {
 		//_bh->addBatch(lightingPass, "Final Pass", 20);
 	}
 
+
 	SDL_Event event;
 
 	Uint64 NOW = SDL_GetPerformanceCounter();
@@ -181,62 +185,62 @@ void GameEngine::run() {
 			case SDLK_ESCAPE:
 				quit = true;
 				break;
-			case SDLK_LSHIFT:
-				c.pressedShift = true;
-				break;
-			case SDLK_SPACE:
-				c.moveUp = true;
-				break;
-			case SDLK_w:
-				c.moveForward = true;
-				break;
-			case SDLK_a:
-				c.moveLeft = true;
-				break;
-			case SDLK_s:
-				c.moveBack = true;
-				break;
-			case SDLK_d:
-				c.moveRight = true;
-				break;
-			case SDLK_LALT:
-				if (c.counter >= 1.f) {
-					c.enableMouse = !c.enableMouse;
-					SDL_ShowCursor(c.enableMouse);
-					c.counter = 0.f;
-				}
-				break;
-			default:
-				break;
-			}
+			//case SDLK_LSHIFT:
+			//	c->pressedShift = true;
+			//	break;
+			//case SDLK_SPACE:
+			//	c->moveUp = true;
+			//	break;
+			//case SDLK_w:
+			//	c->moveForward = true;
+			//	break;
+			//case SDLK_a:
+			//	c->moveLeft = true;
+			//	break;
+			//case SDLK_s:
+			//	c->moveBack = true;
+			//	break;
+			//case SDLK_d:
+			//	c->moveRight = true;
+			//	break;
+			//case SDLK_LALT:
+			//	if (c->counter >= 1.f) {
+			//		c->enableMouse = !c->enableMouse;
+			//		SDL_ShowCursor(c->enableMouse);
+			//		c->counter = 0.f;
+			//	}
+			//	break;
+			//default:
+			//	break;
+			//}
 
-			switch (event.type) {
-			case SDL_KEYUP:
-				if (event.key.keysym.sym == SDLK_LSHIFT)
-					c.pressedShift = false;
-				if (event.key.keysym.sym == SDLK_SPACE)
-					c.moveUp = false;
-				if (event.key.keysym.sym == SDLK_LCTRL)
-					c.moveDown = false;
-				if (event.key.keysym.sym == SDLK_w)
-					c.moveForward = false;
-				if (event.key.keysym.sym == SDLK_a)
-					c.moveLeft = false;
-				if (event.key.keysym.sym == SDLK_s)
-					c.moveBack = false;
-				if (event.key.keysym.sym == SDLK_d)
-					c.moveRight = false;
-				break;
-			default:
-				break;
+			//switch (event.type) {
+			//case SDL_KEYUP:
+			//	if (event.key.keysym.sym == SDLK_LSHIFT)
+			//		c->pressedShift = false;
+			//	if (event.key.keysym.sym == SDLK_SPACE)
+			//		c->moveUp = false;
+			//	if (event.key.keysym.sym == SDLK_LCTRL)
+			//		c->moveDown = false;
+			//	if (event.key.keysym.sym == SDLK_w)
+			//		c->moveForward = false;
+			//	if (event.key.keysym.sym == SDLK_a)
+			//		c->moveLeft = false;
+			//	if (event.key.keysym.sym == SDLK_s)
+			//		c->moveBack = false;
+			//	if (event.key.keysym.sym == SDLK_d)
+			//		c->moveRight = false;
+			//	break;
+			//default:
+			//	break;
 			}
 
 		}
 		_eh->addNewEntities();
 		_eh->update(deltaTime);
 
-		c.getView();
-		c.update(deltaTime, 1, _window);
+		c->getView();
+		c->update(deltaTime, 1, _window);
 		//b->render(_window);
 		//lightingPass->render(_window);
 		_bh->render(_window);

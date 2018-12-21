@@ -33,9 +33,22 @@ public:
 	) {
 		(void)source; (void)type; (void)id;
 		(void)severity; (void)length; (void)userParam;
-		fprintf(stderr, "%s\n", message);
+		switch (severity) {
+		case GL_DEBUG_SEVERITY_LOW:
+			printf("GL CALLBACK::LOW SEVERITY ");
+			break;
+		case GL_DEBUG_SEVERITY_MEDIUM:
+			printf("GL CALLBACK::MEDIUM SEVERITY ");
+			break;
+		case GL_DEBUG_SEVERITY_HIGH:
+			printf("GL CALLBACK::HIGH SEVERITY ");
+			break;
+		}
 
-		printf("%s, ");
+		if(severity != GL_DEBUG_SEVERITY_NOTIFICATION)
+			fprintf(stderr, "%s\n", message);
+
+		//printf("%s\n, ");
 		if (severity == GL_DEBUG_SEVERITY_HIGH) {
 			fprintf(stderr, "Aborting...\n");
 			//abort();

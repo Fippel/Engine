@@ -2,6 +2,8 @@
 #include "engine.hpp"
 #include "window.hpp"
 
+Camera* Camera::_instance = 0;
+
 void Camera::update(float dt, float y, Window* w) {
 	if (!enableMouse) {
 		glm::ivec2 prev = mousePos;
@@ -51,6 +53,19 @@ glm::mat4* Camera::getProj(glm::ivec2 size) {
 
 	proj = glm::perspective(glm::radians(70.f), aspect, zNear, zFar);
 	return &proj;
+}
+
+Camera::Camera() {
+
+}
+
+Camera* Camera::getInstance() {
+	if (!_instance)
+		_instance = new Camera();
+	return _instance;
+}
+
+Camera::~Camera() {
 }
 
 glm::mat4* Camera::getView() {

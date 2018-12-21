@@ -13,7 +13,7 @@
 
 class Mesh {
 public:
-	const static enum BindingLocation : const int {
+	const enum BindingLocation : const int {
 		position = 0,
 		normal = 1, 
 		color = 2,

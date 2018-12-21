@@ -7,7 +7,7 @@
 
 class Texture {
 public:
-	const static enum TextureFormat : const int {
+	const enum TextureFormat : const int {
 		R8 = 0,
 		RG8,
 		RGB8,
@@ -102,20 +102,23 @@ public:
 
 private:
 	GLuint _texture;
-	glm::vec2 _size;
+	glm::ivec2 _size;
 	TextureFormat _format;
 	std::string _path;
 
 	void _setData(void* pixels) {
 		glGenTextures(1, &_texture);
-		glActiveTexture(GL_TEXTURE0);
+		//glActiveTexture(GL_TEXTURE0);
 		glBindTexture(GL_TEXTURE_2D, _texture);
 
-		glTexImage2D(GL_TEXTURE_2D, 0, toGLInternal(_format), _size.x, _size.y, 0, toGLBase(_format), toGLDataType(_format), pixels);
+		
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_BASE_LEVEL, 0);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAX_LEVEL, 0);
+		glTexImage2D(GL_TEXTURE_2D, 0, toGLInternal(_format), _size.x, _size.y, 0, toGLBase(_format), toGLDataType(_format), pixels);
 	}
 public:
 	Texture();
@@ -124,7 +127,7 @@ public:
 	Texture(const std::string& path);
 	~Texture();
 
-	void setData(const glm::vec2& size, void* data, glm::vec2 offset = glm::vec2(0)) {
+	void setData(const glm::ivec2& size, void* data, glm::ivec2 offset = glm::ivec2(0)) {
 		glTextureSubImage2D(_texture, 0, offset.x, offset.y, size.x, size.y, static_cast<GLenum>(_format), toGLDataType(_format), data);
 	}
 

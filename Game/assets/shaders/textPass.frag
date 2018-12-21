@@ -16,4 +16,5 @@ void main()
 	//color = vec4(1, 0, 0, 0);
 	//vec4 li = texture(lightInput, TexCoords);
 	fragColor = color;
+	//fragColor = vec4(1, 1, 1, 1);
 }  

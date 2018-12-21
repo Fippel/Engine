@@ -26,18 +26,12 @@ private:
 	ShaderProgram* _lightingPass;
 	ShaderProgram* _waterPass;
 
-	Camera _camera;
+	//Camera _camera;
 	std::vector<Model> _models;
 	std::vector<Model> _waters;
 	std::vector<Terrain> _terrains;
 
 	Batch* _testBatch;
-
-	void _init();
-	void _initSDL();
-	void _initGL();
-	void _initWorld();
-
 
 public:
 	Engine();

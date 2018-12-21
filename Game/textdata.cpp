@@ -37,6 +37,9 @@ void freetype::loadCharacters() {
 	glPixelStorei(GL_UNPACK_ALIGNMENT, 1);
 
 	for (int i = 0; i < 128; i++) {
+		if (i == 32) // ascii 32 aka space
+			continue;
+
 		if(FT_Load_Char(_face, i, FT_LOAD_RENDER)) {
 			printf("ERROR::FREETYTPE: Failed to load Glyph\n");
 			continue;
@@ -61,7 +64,7 @@ void freetype::loadCharacters() {
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_EDGE);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
-
+		
 		Character character = {
 			texture,
 			glm::ivec2(_face->glyph->bitmap.width, _face->glyph->bitmap.rows),
@@ -80,8 +83,15 @@ Model freetype::generateText(std::string text, GLfloat x, GLfloat y, GLfloat sca
 	
 	std::string::const_iterator c;
 	for (c = text.begin(); c != text.end(); c++) {
+		
+		
 		Character ch = _characters[*c];
 
+		if (*c == ' ') { // add an offset on space
+			x += 8 * scale;
+			continue;
+		}
+		
 		GLfloat xpos = x + ch.bearing.x * scale;
 		GLfloat ypos = y - (ch.size.y - ch.bearing.y) * scale;
 
@@ -116,7 +126,8 @@ Model freetype::generateText(std::string text, GLfloat x, GLfloat y, GLfloat sca
 
 		std::vector<GLuint> indices{1, 0, 3, 3, 2, 1};
 
-
+		
+		
 		std::map<std::string, Texture> tmpMap;
 		tmpMap["diffuseTexture"] = Texture(_characters[*c].textureID);
 		m.meshes.push_back(new Mesh(vertices, indices, tmpMap, false));
